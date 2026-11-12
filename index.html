@@ -51,11 +51,12 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .logo{display:block;width:36px;height:32px;object-fit:contain;flex-shrink:0;transform:translateY(-5px)}
 .h1{margin:0;font-family:var(--display);font-weight:400;font-size:52px;line-height:1.05}
 .lede{margin:0;font-size:17px;color:var(--ink-2);white-space:nowrap}
-.orbit{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center}
-.rings{position:absolute;left:-70px;right:-70px;top:-40px;bottom:-40px;pointer-events:none;
+.orbit{flex:1;min-height:0;position:relative}
+.stage{position:absolute;left:50%;top:50%;width:0;height:0;transform:scale(var(--k,1))}
+.rings{position:absolute;left:-237px;top:-237px;width:474px;height:474px;pointer-events:none;
   -webkit-mask-image:radial-gradient(closest-side,#000 52%,transparent 100%);mask-image:radial-gradient(closest-side,#000 52%,transparent 100%)}
 .rings span{position:absolute;left:50%;top:50%;border-radius:50%;border:1.5px solid var(--ring)}
-.photo{position:relative;z-index:2;width:268px;height:268px;max-width:100%;border-radius:50%;overflow:hidden;border:6px solid var(--soft);background:#D3CEC7}
+.photo{position:absolute;left:-134px;top:-134px;box-sizing:border-box;z-index:2;width:268px;height:268px;max-width:none;border-radius:50%;overflow:hidden;border:6px solid var(--soft);background:#D3CEC7}
 .photo img{display:block;width:100%;height:100%;object-fit:cover}
 .emo{position:absolute;left:50%;top:50%;z-index:1;padding:6px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
 .emo span{display:block;line-height:1;opacity:.75;transition:opacity .2s,transform .2s;animation:floatY var(--dur) ease-in-out var(--delay) infinite}
@@ -290,8 +291,8 @@ function vWelcome(){
     '<div class="daterow"><div class="date">28.05.27 · 12:00 · ערוגות בושם, חדרה</div><img class="logo" src="' + LOGO + '" alt="הלוגו של סתיו ועדן"></div>' +
     '<h1 class="h1">סתיו ועדן<br>מתחתנים!</h1>' +
     '<p class="lede">לא להתעצל, דקה אחת של מילוי מבטיחים 😉</p>' +
-    '<div class="orbit"><div class="rings" aria-hidden="true">' + rings + '</div>' +
-      '<div class="photo"><img src="' + PHOTO + '" alt="סתיו ועדן עם הכלב, יושבים על מדרגות מול דלת כחולה"></div>' + emo + sp + '</div>' +
+    '<div class="orbit"><div class="stage"><div class="rings" aria-hidden="true">' + rings + '</div>' +
+      '<div class="photo"><img src="' + PHOTO + '" alt="סתיו ועדן עם הכלב, יושבים על מדרגות מול דלת כחולה"></div>' + emo + sp + '</div></div>' +
     '<button class="btn" id="startBtn" data-act="start">יאללה, בוא נסיים עם זה</button>' +
     '<button class="textbtn u" data-act="toLogin">כבר מילאתי, תכניסו אותי</button>' +
   '</section>';
@@ -433,8 +434,16 @@ function render(){
   else if (S.screen === 'app') html = vApp();
   else html = vFlow();
   app.innerHTML = html;
+  fitOrbit();
   if (fid) { const el = document.getElementById(fid); if (el) { el.focus({preventScroll:true}); try { if (ss != null) el.setSelectionRange(ss, se); } catch (e) {} } }
 }
+let K = 1;
+function fitOrbit(){
+  const o = app.querySelector('.orbit'); if (!o) return;
+  K = Math.max(0.55, Math.min(1, o.clientHeight / 430, app.clientWidth / 410));
+  o.style.setProperty('--k', K.toFixed(3));
+}
+window.addEventListener('resize', fitOrbit);
 function set(o){ Object.assign(S, o); render(); }
 function enterApp(){ set({screen:'app', tab:'wall', joined:!!nm()}); }
 
@@ -523,7 +532,7 @@ app.addEventListener('pointerdown', (e) => {
 });
 app.addEventListener('pointermove', (e) => {
   if (!drag) return;
-  const o = ORBIT[drag.i], off = {x:drag.ox + e.clientX - drag.sx, y:drag.oy + e.clientY - drag.sy};
+  const o = ORBIT[drag.i], off = {x:drag.ox + (e.clientX - drag.sx) / K, y:drag.oy + (e.clientY - drag.sy) / K};
   S.offsets[drag.i] = off;
   drag.el.style.transform = pos(o.r, o.a, off).replace('transform:', '');
 });
