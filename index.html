@@ -193,6 +193,8 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .count .txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
 .count .pills{display:flex;gap:6px;margin-top:4px;font-size:12px;font-weight:500;flex-wrap:wrap}
 .count .pills span{background:var(--soft);border-radius:99px;padding:2px 8px;font-variant-numeric:tabular-nums}
+.starters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.starters .chip{padding:0 6px;font-size:14px;white-space:nowrap}
 .sechead{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
 .sechead b{font-size:17px}
 .lockb{margin-inline-start:auto;font-size:12px;font-weight:700;background:var(--fill);color:#fff;border-radius:99px;padding:3px 9px;white-space:nowrap}
@@ -400,7 +402,7 @@ function vCountdown(){
   return '<div class="count"><div class="num"><b>' + days + '</b><span>' + (days === 1 ? 'יום לחופה' : 'ימים לחופה') + '</span></div><div class="sep"></div><div class="txt"><b style="font-size:15px">מספיק זמן לבחור בגדים.</b><div class="note" style="font-size:14px">לא מספיק כדי להתחרט.</div><div class="pills"><span>' + hours.toLocaleString('en-US') + ' שעות</span><span>' + sat + ' שבתות</span></div></div></div>';
 }
 function vStarters(){
-  return '<div class="chips">' + STARTERS.map((st, i) => '<button class="chip sel-base" data-act="starter" data-arg="' + i + '">' + st.label + '</button>').join('') + '</div>';
+  return '<div class="starters">' + STARTERS.map((st, i) => '<button class="chip sel-base" data-act="starter" data-arg="' + i + '">' + st.label + '</button>').join('') + '</div>';
 }
 function vPost(p){
   return '<article class="post"><div class="who"><div class="avatar" style="width:40px;height:40px;font-size:17px;font-family:var(--body);font-weight:700;background:var(--soft)">' + esc(p.ini) + '</div><span><b>' + esc(p.name) + '</b><small>' + p.time + '</small></span>' + (p.priv ? '<span class="lockb">🔒 רק לזוג</span>' : '') + '</div>' +
