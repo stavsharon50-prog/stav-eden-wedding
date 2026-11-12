@@ -45,7 +45,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .screen{position:absolute;inset:0;display:flex;flex-direction:column}
 
 /* welcome */
-.welcome{padding:56px 28px 36px;gap:18px}
+.welcome{padding:24px 28px 14px;gap:10px}
+.welcome > :not(.orbit){position:relative;z-index:3}
+.welcome .btn{margin-top:6px}
 .daterow{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .date{font-size:17px;color:var(--ink-2);font-weight:500;white-space:nowrap}
 .logo{display:block;width:36px;height:32px;object-fit:contain;flex-shrink:0;transform:translateY(-5px)}
@@ -440,8 +442,8 @@ function render(){
 let K = 1;
 function fitOrbit(){
   const o = app.querySelector('.orbit'); if (!o) return;
-  K = Math.max(0.55, Math.min(1, o.clientHeight / 430, app.clientWidth / 410));
-  o.style.setProperty('--k', K.toFixed(3));
+  K = 1;
+  o.style.setProperty('--k', '1');
 }
 window.addEventListener('resize', fitOrbit);
 function set(o){ Object.assign(S, o); render(); }
