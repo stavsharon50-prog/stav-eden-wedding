@@ -81,7 +81,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .searchbox{margin:12px 0}.searchbox .input{height:48px;font-size:16px;padding-right:44px;background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236B635B' stroke-width='2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='m20 20-3.5-3.5'/></svg>") no-repeat right 14px center}
 .linkish{border:0;background:transparent;padding:0;font:inherit;font-size:14px;color:var(--accent);font-weight:700;text-align:right;cursor:pointer}
 .btn2{height:52px;border:2px solid var(--fill);border-radius:18px;background:rgba(255,255,255,.55);color:var(--ink);font-size:17px;font-weight:700;width:100%}
-.iconbtn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card-solid);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
+.iconbtn{width:44px;height:44px;border-radius:50%;border:1px solid transparent;background:var(--card-solid);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
 
 /* flow */
 .topbar{display:flex;align-items:center;gap:12px;padding:20px 20px 8px}
@@ -98,11 +98,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .hint{font-size:13px;color:var(--muted)}
 .field{display:flex;flex-direction:column;gap:8px}
 .field label,.lbl{font-size:15px;font-weight:500}
-.input{height:56px;border-radius:14px;border:2px solid var(--line);background:var(--card);padding:0 16px;font-size:18px;box-sizing:border-box;width:100%}
+.input{height:56px;border-radius:14px;border:2px solid transparent;background:var(--card);padding:0 16px;font-size:18px;box-sizing:border-box;width:100%}
 .input.err{border-color:var(--error)}
 textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .ltr{direction:ltr;text-align:right}
-.sel-base{border:2px solid var(--line);background:var(--card);color:var(--ink)}
+.sel-base{border:2px solid transparent;background:var(--card);color:var(--ink)}
 .sel-on{border-color:transparent;background:var(--fill);color:#fff}
 .choice{text-align:right;padding:18px 20px;border-radius:18px;display:flex;flex-direction:column;gap:2px;width:100%}
 .choice b{font-size:21px}
@@ -114,7 +114,7 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .stop small{font-size:14px;opacity:.85;white-space:nowrap}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{min-height:44px;padding:0 14px;border-radius:99px;font-size:15px;font-weight:500}
-.counter{display:flex;align-items:center;gap:16px;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:8px}
+.counter{display:flex;align-items:center;gap:16px;background:var(--card);border:2px solid transparent;border-radius:14px;padding:8px}
 .counter button{width:48px;height:48px;border-radius:12px;border:0;background:rgba(30,27,24,.06);font-size:24px}
 .counter div{flex:1;text-align:center;font-size:18px;font-weight:700}
 .avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);color:var(--ink);flex-shrink:0}
@@ -122,17 +122,17 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .avatar.off{background:#EDE4DA;color:var(--muted);border:4px dashed #B8AEA2}
 .photostep{display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:12px}
 .outline{height:52px;padding:0 24px;border-radius:14px;border:2px solid var(--ink);background:var(--card-solid);font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px;justify-content:center}
-.waze{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;background:var(--card);border:2px solid var(--line);text-decoration:none;color:var(--ink)}
+.waze{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;background:var(--card);border:2px solid transparent;text-decoration:none;color:var(--ink)}
 .waze .ic{width:48px;height:48px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .waze span{display:flex;flex-direction:column}
 .alert{background:var(--card-solid);border:2px solid var(--error);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
 .alert b{color:var(--error)}
-.okbox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+.okbox{background:var(--card);border:1px solid transparent;border-radius:20px;padding:20px}
 
 /* app */
 .apphead{padding:20px 20px 10px;font-family:var(--display);font-size:26px;line-height:1.2}
 .appbody{flex:1;overflow-y:auto;padding:4px 16px 110px}
-.banner{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 14px;margin-bottom:14px}
+.banner{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid transparent;border-radius:18px;padding:12px 14px;margin-bottom:14px}
 .banner .t{flex:1;min-width:0;font-size:15px;display:flex;flex-direction:column}
 .banner .t b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hero{position:relative;margin-top:18px;background:var(--hero);color:#fff;border-radius:24px;padding:30px 20px 22px;display:flex;flex-direction:column;gap:8px}
@@ -145,13 +145,13 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .ghost .dot{width:34px;height:34px;border-radius:50%}
 .ph{border-radius:14px;background:#EFE7DC;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;color:var(--muted);font-size:14px}
 .feed{display:flex;flex-direction:column;gap:14px}
-.post{background:var(--card);border-radius:20px;padding:16px;border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.post{background:var(--card);border-radius:20px;padding:16px;border:1px solid transparent;display:flex;flex-direction:column;gap:10px}
 .post .who{display:flex;align-items:center;gap:10px}
 .post .who span{display:flex;flex-direction:column}
 .post .who small{font-size:13px;color:var(--muted)}
 .post p{margin:0;font-size:17px;white-space:pre-wrap}
 .reacts{display:flex;gap:8px;flex-wrap:wrap}
-.react{height:36px;min-width:52px;padding:0 10px;border-radius:99px;border:1.5px solid var(--line);background:var(--card-solid);font-size:15px;display:flex;align-items:center;gap:4px;justify-content:center}
+.react{height:36px;min-width:52px;padding:0 10px;border-radius:99px;border:1.5px solid transparent;background:var(--card-solid);font-size:15px;display:flex;align-items:center;gap:4px;justify-content:center}
 .react.on{background:var(--soft);border-color:var(--accent)}
 .react small{font-size:14px;font-weight:500;font-variant-numeric:tabular-nums}
 .spot{background:var(--hero);color:#fff;border-radius:24px;padding:18px;display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
@@ -166,13 +166,13 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .filters .chip{flex-shrink:0;height:40px;min-height:40px}
 .addtile{border:2px dashed #C9BFB3;background:rgba(255,255,255,.6)!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer}
 .addtile svg{width:28px;height:28px}
-.guest{background:var(--card);border-radius:18px;border:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink);min-width:0}
+.guest{background:var(--card);border-radius:18px;border:1px solid transparent;padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink);min-width:0}
 .guest .nm{font-weight:700;font-size:16px}
 .guest .fact{font-size:13px;color:var(--muted);width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tag{font-size:12px;padding:3px 10px;border-radius:99px;background:var(--soft)}
 .wave{position:absolute;bottom:-4px;left:-6px;font-size:22px}
-.profile{background:var(--card);border-radius:24px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:10px;border:1px solid var(--line)}
-.rows{margin-top:14px;background:var(--card);border-radius:20px;border:1px solid var(--line);padding:6px 18px}
+.profile{background:var(--card);border-radius:24px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:10px;border:1px solid transparent}
+.rows{margin-top:14px;background:var(--card);border-radius:20px;border:1px solid transparent;padding:6px 18px}
 .rows .r{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
 .rows .r:last-child{border-bottom:0;padding:8px 0}
 .pill{height:40px;padding:0 14px;border-radius:99px;background:var(--fill);color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;gap:6px;text-decoration:none}
@@ -190,7 +190,7 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .instabtn{height:56px;border-radius:16px;background:var(--fill);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
 .wavebtn{height:56px;border-radius:16px;border:2px solid var(--ink);background:var(--card-solid);font-size:16px;font-weight:700}
 .wavebtn.on{background:var(--soft);border-color:var(--accent)}
-.count{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px}
+.count{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid transparent;border-radius:20px;padding:14px 16px}
 .count .num{display:flex;flex-direction:column;align-items:center;min-width:76px}
 .count .num b{font-family:var(--display);font-weight:400;font-size:44px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
 .count .num span{font-size:13px;font-weight:700}
@@ -210,6 +210,8 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
 .tile{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-2);border:0;padding:0}
 .tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .in{display:contents}.tile.locked .in{display:block;width:100%;height:100%;filter:blur(7px);opacity:.75;display:flex;align-items:center;justify-content:center}.tile.locked .in img{width:100%;height:100%;object-fit:cover}
+.tile.locked .lk{top:50%;right:50%;transform:translate(50%,-50%);width:34px;height:34px;font-size:16px}
 .tile .lk{position:absolute;top:6px;right:6px;width:24px;height:24px;border-radius:50%;background:var(--fill);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
 .tile .hearts{position:absolute;bottom:6px;left:6px;background:rgba(255,255,255,.9);border-radius:99px;padding:1px 7px;font-size:11px;font-weight:700}
 .tile.out{opacity:.25}
@@ -224,6 +226,19 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .match .pair .avatar{width:96px;height:96px;font-size:40px;border:4px solid #fff}
 .match .hand{width:44px;height:44px;border-radius:50%;background:var(--hero);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 -14px;z-index:1;border:3px solid #fff}
 .match .dot{position:absolute}
+.nudgeav{position:relative;margin-bottom:4px}.nudgeav .avatar{width:104px;height:104px;font-size:44px;border:4px solid #fff}
+.nudgeav .poke{position:absolute;bottom:-4px;left:-10px;width:46px;height:46px;border-radius:50%;background:var(--hero);border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:22px;animation:poke 1s ease-in-out infinite}
+@keyframes poke{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px)}}
+.btn svg{vertical-align:-5px;margin-left:8px}
+.chat{position:absolute;inset:0;z-index:35;background:var(--ground);display:flex;flex-direction:column}
+.chathd{display:flex;align-items:center;gap:12px;padding:16px 16px 12px;border-bottom:1px solid var(--line)}
+.msgs{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:16px}
+.msgs .sys{align-self:center;font-size:13px;color:var(--muted);background:var(--card);border-radius:99px;padding:6px 12px;margin-bottom:6px}
+.msg{max-width:78%;padding:10px 14px;border-radius:18px;font-size:16px;line-height:1.35}
+.msg.me{align-self:flex-end;background:var(--fill);color:#fff;border-bottom-left-radius:6px}
+.msg.them{align-self:flex-start;background:var(--card-solid);border-bottom-right-radius:6px}
+.chatin{display:flex;gap:8px;padding:10px 16px 24px}.chatin .input{height:50px;font-size:16px;background:var(--card-solid)}
+.sendbtn{width:50px;height:50px;border-radius:50%;border:0;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}.sendbtn[aria-disabled="true"]{background:var(--disabled)}
 .note{font-size:13px;color:var(--muted)}
 @media (prefers-reduced-motion: reduce){
   .emo span,.spark span,.hero .cricket{animation:none}
@@ -244,7 +259,7 @@ const WAZE = "https://waze.com/ul?q=%D7%A2%D7%A8%D7%95%D7%92%D7%95%D7%AA%20%D7%9
 const S = {
   screen:'welcome', rsvp:null, name:'', phone:'', count:1, photo:false,
   bus:null, stop:null, insta:'', status:'hidden', fact:'',
-  tab:'wall', filter:'all', whoQ:'', nudged:{}, composer:false, draft:'', draftPhoto:false,
+  tab:'wall', filter:'all', whoQ:'', nudged:{}, chatWith:null, chats:{}, chatDraft:'', composer:false, draft:'', draftPhoto:false,
   guest:null, byeSent:false, nextId:1, joined:false, spot:0, waved:{},
   posts:[], loginPhone:'', loginErr:false, offsets:{}, busy:false,
   draftPriv:false, matchWith:null, albumView:'grid', albumFilter:'all', gender:'', faceOn:false, notMe:{}, toast:''
@@ -280,6 +295,8 @@ const ICON = {
   nav:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg>',
   plus:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
   img:'<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-9 8"/></svg>',
+  chat:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg>',
+  send:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h14M11 5l-7 7 7 7"/></svg>',
   insta:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>',
   wall:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg>',
   who:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5a5 5 0 0 1 4.5 5"/></svg>',
@@ -291,7 +308,7 @@ const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({'&':'
 const digits = (v) => String(v || '').replace(/\D/g, '');
 const sel = (on) => on ? 'sel-on' : 'sel-base';
 /* gendered copy: one form per guest instead of slashes */
-const GW = {'את/ה':['אתה','את'],'שאת/ה':['שאתה','שאת'],'מגיע/ה':['מגיע','מגיעה'],'רווק/ה':['רווק','רווקה'],'אורח/ת':['אורח','אורחת'],'מסתורי/ת':['מסתורי','מסתורית'],'מתלבט/ת':['מתלבט','מתלבטת'],'ופתוח/ה':['ופתוח','ופתוחה'],'תפוס/ה':['תפוס','תפוסה'],'מאחל/ת':['מאחל','מאחלת'],'זה/זו':['זה','זו'],'סיפר/ה':['סיפר','סיפרה'],'תן/י':['תן','תני'],'כשתחזור/י':['כשתחזור','כשתחזרי'],'צריך/ה':['צריך','צריכה'],'תשאיר/י':['תשאיר','תשאירי'],'מצטער/ת':['מצטער','מצטערת'],'מפספס/ת':['מפספס','מפספסת'],'דלג/י':['דלג','דלגי'],'ביישן/ית':['ביישן','ביישנית'],'שכותב/ת':['שכותב','שכותבת'],'ראשון/ה':['ראשון','ראשונה'],'מקבל/ת':['מקבל','מקבלת'],'יודע/ת':['יודע','יודעת'],'תבחר/י':['תבחר','תבחרי'],'שנתקע/ה':['שנתקע','שנתקעה'],'נופפ/ה':['נופף','נופפה'],'מישהו/י':['מישהו','מישהי'],'בוא/י':['בוא','בואי'],'תגריל/י':['תגריל','תגרילי'],'ינופף/תנופף':['ינופף','תנופף'],'קיבל/ה':['קיבל','קיבלה'],'תראה/י':['תראה','תראי']};
+const GW = {'את/ה':['אתה','את'],'שאת/ה':['שאתה','שאת'],'מגיע/ה':['מגיע','מגיעה'],'רווק/ה':['רווק','רווקה'],'אורח/ת':['אורח','אורחת'],'מסתורי/ת':['מסתורי','מסתורית'],'מתלבט/ת':['מתלבט','מתלבטת'],'ופתוח/ה':['ופתוח','ופתוחה'],'תפוס/ה':['תפוס','תפוסה'],'מאחל/ת':['מאחל','מאחלת'],'זה/זו':['זה','זו'],'סיפר/ה':['סיפר','סיפרה'],'תן/י':['תן','תני'],'כשתחזור/י':['כשתחזור','כשתחזרי'],'צריך/ה':['צריך','צריכה'],'תשאיר/י':['תשאיר','תשאירי'],'מצטער/ת':['מצטער','מצטערת'],'מפספס/ת':['מפספס','מפספסת'],'דלג/י':['דלג','דלגי'],'ביישן/ית':['ביישן','ביישנית'],'שכותב/ת':['שכותב','שכותבת'],'ראשון/ה':['ראשון','ראשונה'],'מקבל/ת':['מקבל','מקבלת'],'יודע/ת':['יודע','יודעת'],'תבחר/י':['תבחר','תבחרי'],'שנתקע/ה':['שנתקע','שנתקעה'],'נופפ/ה':['נופף','נופפה'],'מישהו/י':['מישהו','מישהי'],'בוא/י':['בוא','בואי'],'תגריל/י':['תגריל','תגרילי'],'ינופף/תנופף':['ינופף','תנופף'],'קיבל/ה':['קיבל','קיבלה'],'ינדנד/תנדנד':['ינדנד','תנדנד'],'נדנד/ה':['נדנד','נדנדה'],'שלו/שלה':['שלו','שלה'],'תראה/י':['תראה','תראי']};
 const GRE = new RegExp('(^|[^\\u0590-\\u05FF])(' + Object.keys(GW).sort((a, b) => b.length - a.length).map((k) => k.replace('/', '\\/')).join('|') + ')(?![\\u0590-\\u05FF])', 'g');
 const gx = (str, g) => (g === 'm' || g === 'f') ? String(str).replace(GRE, (m, pre, w) => pre + GW[w][g === 'm' ? 0 : 1]) : String(str);
 /* text about another guest: their form, and shielded from the viewer's pass */
@@ -450,25 +467,17 @@ const ALBUM = [
 ];
 function tile(it, extra){
   const inner = it.photo ? '<img src="' + PHOTO + '" alt="סתיו ועדן">' : (it.mine ? 'התמונה שלך' : 'תמונה');
-  return '<div class="tile" style="background:' + (it.mine ? 'var(--soft)' : PAL[(it.c || 0) % PAL.length]) + '">' + inner + (it.lock ? '<span class="lk" aria-label="רק לזוג">🔒</span>' : '') + (extra || '') + '</div>';
+  return '<div class="tile' + (it.lock ? ' locked' : '') + '" style="background:' + (it.mine ? 'var(--soft)' : PAL[(it.c || 0) % PAL.length]) + '"><span class="in">' + inner + '</span>' + (it.lock ? '<span class="lk" aria-label="רק לזוג">🔒</span>' : '') + (extra || '') + '</div>';
 }
 function vAlbum(){
   if (S.albumView === 'find') return vFind();
   const mine = S.posts.filter((p) => p.photo).map((p) => ({mine:1, lock:p.priv, h:p.r.love}));
   const total = 412 + mine.length;
   let h = '<div class="sub sm" style="margin-bottom:12px">' + total + ' תמונות מ-87 אורחים. דוגמה בינתיים, עד שהחתונה תמלא את זה באמת.</div>' +
-    '<button class="findcard" data-act="openFind"><span class="ic" aria-hidden="true">🔍</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:16px">תמצאו אותי</b><span style="font-size:13px">כל התמונות שאת/ה בהן, לפי הסלפי שלך</span></span><span class="go">יאללה</span></button>' +
-    '<div class="filters" style="margin-top:12px">' + [['all','הכל'],['loved','הכי אהובות ❤️'],['priv','רק לזוג 🔒']].map((f) => '<button class="chip ' + sel(S.albumFilter === f[0]) + '" data-act="albumFilter" data-arg="' + f[0] + '" aria-pressed="' + (S.albumFilter === f[0]) + '">' + f[1] + '</button>').join('') + '</div>';
+    '<button class="findcard" data-act="openFind"><span class="ic" aria-hidden="true">🔍</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:16px">תמצאו אותי</b><span style="font-size:13px">כל התמונות שאת/ה בהן, לפי הסלפי שלך</span></span><span class="go">יאללה</span></button>';
   const all = mine.concat(...ALBUM.map((g) => g.items));
-  if (S.albumFilter === 'loved') {
-    const top = all.slice().sort((a, b) => (b.h || 0) - (a.h || 0)).slice(0, 9);
-    h += '<div class="tiles">' + top.map((it) => tile(it, '<span class="hearts">❤️ ' + (it.h || 0) + '</span>')).join('') + '</div>';
-  } else if (S.albumFilter === 'priv') {
-    const pr = all.filter((it) => it.lock);
-    h += '<div class="tiles">' + pr.map((it) => tile(it)).join('') + '</div>' +
-      '<p class="note" style="margin:12px 0 0">תמונות וברכות עם 🔒 נשלחו רק לסתיו ועדן. כולם רואים שהן קיימות, רק הזוג רואה מה יש בהן.</p>';
-  } else {
-    h += '<div class="tiles">' + '<button class="tile addtile" data-act="openComposer" aria-label="הוספת תמונה">' + ICON.plus + '<span>תמונה</span></button>' + all.map((it) => tile(it)).join('') + '</div>';
+  {
+    h += '<div class="tiles" style="margin-top:12px">' + '<button class="tile addtile" data-act="openComposer" aria-label="הוספת תמונה">' + ICON.plus + '<span>תמונה</span></button>' + all.map((it) => tile(it)).join('') + '</div>';
   }
   return h;
 }
@@ -490,18 +499,26 @@ function vFind(){
 }
 function vMatch(){
   const g = guestList().find((x) => x.id === S.matchWith); if (!g) return '';
-  const dots = [[12,18,10,'2px','#E0569B',20],[84,22,8,'50%','#F5C928',0],[20,64,8,'50%','#7CCFEF',0],[78,70,10,'2px','#1E1B18',40],[50,12,7,'2px','#7CCFEF',60],[90,48,9,'2px','#E0569B',15],[8,40,7,'50%','#F5C928',0]]
-    .map((d) => '<span class="dot" aria-hidden="true" style="left:' + d[0] + '%;top:' + d[1] + '%;width:' + d[2] + 'px;height:' + d[2] + 'px;border-radius:' + d[3] + ';background:' + d[4] + ';transform:rotate(' + d[5] + 'deg)"></span>').join('');
   const first = g.name.split(' ')[0];
-  return '<div class="match"><div class="box" role="dialog" aria-label="יש התאמה">' + dots +
-    '<div class="pair"><div class="avatar ' + (S.photo ? 'on' : 'off') + '" style="transform:rotate(-6deg);border:4px solid #fff">' + esc(initial()) + '</div><div class="hand" aria-hidden="true">👋</div><div class="avatar" style="transform:rotate(6deg);background:' + g.color + '">' + esc(g.ini) + '</div></div>' +
-    '<div class="h2" style="font-size:38px;line-height:1.1">יש התאמה 👀</div>' +
-    '<div class="sub">' + esc(first) + ' ' + gOther('נופפ/ה', g.g) + ' לך בחזרה. הבר משמאל, אין יותר תירוצים.</div>' +
-    '<button class="btn" style="height:56px;font-size:17px;margin-top:6px" data-act="closeMatch">אני בדרך לבר</button>' +
-    '<div class="grid2" style="gap:10px;width:100%"><button class="outline" style="height:48px;font-size:15px" data-act="nudge" data-arg="' + g.id + '">' + (S.nudged[g.id] ? 'נדנדת ✓' : 'לנדנד 👉') + '</button>' +
-    '<a class="outline" style="height:48px;font-size:15px;text-decoration:none;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:6px" href="https://instagram.com/' + esc(String(g.insta || '').replace('@', '')) + '" target="_blank" rel="noopener">' + ICON.insta + '<span dir="ltr">' + esc(g.insta) + '</span></a></div>' +
-    (S.nudged[g.id] ? '<div class="sub sm">' + esc(first) + ' ' + gOther('קיבל/ה', g.g) + ' נדנוד. עכשיו תור' + (g.g === 'm' ? 'ו' : g.g === 'f' ? 'ה' : 'ו/ה') + '.</div>' : '') +
+  const ig = String(g.insta || '').replace('@', '');
+  return '<div class="match"><div class="box" role="dialog" aria-label="נדנוד">' +
+    '<div class="nudgeav"><div class="avatar" style="background:' + g.color + '">' + esc(g.ini) + '</div><span class="poke" aria-hidden="true">👉</span></div>' +
+    '<div class="h2" style="font-size:34px;line-height:1.1">' + esc(first) + ' ' + gOther('נדנד/ה', g.g) + ' לך</div>' +
+    '<div class="sub">' + (g.status !== 'hidden' ? gOther(STATUS[g.status], g.g) + ' · ' : '') + '"' + esc(g.fact) + '"</div>' +
+    '<button class="btn" style="height:56px;font-size:17px;margin-top:6px" data-act="startChat" data-arg="' + g.id + '">' + ICON.chat + 'להתחיל צ\'אט</button>' +
+    '<a class="outline" style="width:100%;height:50px;font-size:16px;text-decoration:none;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px" href="https://instagram.com/' + esc(ig) + '" target="_blank" rel="noopener">' + ICON.insta + 'לאינסטגרם ' + gOther('שלו/שלה', g.g) + ' <span dir="ltr">' + esc(g.insta) + '</span></a>' +
+    '<button class="textbtn" data-act="closeMatch">אחר כך</button>' +
     '<div class="note">רק שניכם רואים את זה. אף דודה לא תדע.</div></div></div>';
+}
+function vChat(){
+  const g = guestList().find((x) => x.id === S.chatWith); if (!g) return '';
+  const first = g.name.split(' ')[0];
+  const msgs = (S.chats[g.id] || []);
+  return '<div class="chat" role="dialog" aria-label="צ\'אט עם ' + esc(first) + '">' +
+    '<div class="chathd"><button class="iconbtn" data-act="closeChat" aria-label="חזרה">' + ICON.back + '</button><div class="avatar" style="width:44px;height:44px;font-size:20px;background:' + g.color + '">' + esc(g.ini) + '</div><div style="flex:1;min-width:0"><b style="font-size:17px">' + esc(g.name) + '</b><div class="note" style="margin:0">' + (g.status !== 'hidden' ? gOther(STATUS[g.status], g.g) : 'אורח/ת בחתונה') + '</div></div></div>' +
+    '<div class="msgs"><div class="sys">' + esc(first) + ' ' + gOther('נדנד/ה', g.g) + ' לך 👉 תגידו שלום</div>' +
+      msgs.map((m) => '<div class="msg ' + (m.me ? 'me' : 'them') + '">' + esc(m.t) + '</div>').join('') + '</div>' +
+    '<div class="chatin"><input id="chatq" class="input" type="text" placeholder="לכתוב משהו..." data-field="chatDraft" value="' + esc(S.chatDraft) + '"><button class="sendbtn" data-act="sendChat" aria-label="שליחה" aria-disabled="' + !S.chatDraft.trim() + '">' + ICON.send + '</button></div></div>';
 }
 function vWho(){
   const all = guestList(), others = all.filter((g) => g.id !== 'me');
@@ -509,10 +526,10 @@ function vWho(){
   const q = (S.whoQ || '').trim();
   const shown = q ? all.filter((g) => g.name.indexOf(q) !== -1) : all;
   return '<div class="sub sm" style="margin-bottom:12px">' + others.length + ' אורחים כבר פה. בוא/י להכיר.</div>' +
-    '<div class="searchbox"><input id="whoq" class="input" type="search" placeholder="חיפוש לפי שם" data-field="whoQ" value="' + esc(S.whoQ || '') + '" aria-label="חיפוש אורח לפי שם"></div>' +
     '<div class="spot"><div class="k">' + gOther('מישהו/י', spot.g) + ' שכדאי להכיר הערב 💘</div><div class="row"><div class="avatar" style="width:72px;height:72px;font-size:30px;border:3px solid #fff;background:' + spot.color + '">' + spot.ini + '</div><div><div class="name">' + spot.name + '</div><div style="font-size:15px">"' + spot.fact + '"</div></div></div>' +
       '<div class="grid2" style="gap:10px"><button class="spotbtn w" data-act="openGuest" data-arg="' + spot.id + '">בוא/י נראה</button><button class="spotbtn o" data-act="shuffle">תגריל/י עוד</button></div></div>' +
-    (shown.length ? '<div class="grid2">' + shown.map((g) => '<button class="guest" data-act="openGuest" data-arg="' + g.id + '"><div style="position:relative"><div class="avatar" style="width:68px;height:68px;font-size:28px;background:' + g.color + '">' + esc(g.ini) + '</div>' + (S.waved[g.id] ? '<span class="wave" aria-hidden="true">👋</span>' : '') + '</div><span class="nm">' + esc(g.name) + '</span>' + (g.status !== 'hidden' ? '<span class="tag">' + gOther(STATUS[g.status], g.g) + '</span>' : '') + '<span class="fact">' + esc(g.fact) + '</span></button>').join('') + '</div>'
+    '<div class="searchbox"><input id="whoq" class="input" type="search" placeholder="חיפוש לפי שם" data-field="whoQ" value="' + esc(S.whoQ || '') + '" aria-label="חיפוש אורח לפי שם"></div>' +
+    (shown.length ? '<div class="grid2">' + shown.map((g) => '<button class="guest" data-act="openGuest" data-arg="' + g.id + '"><div style="position:relative"><div class="avatar" style="width:68px;height:68px;font-size:28px;background:' + g.color + '">' + esc(g.ini) + '</div>' + (S.waved[g.id] ? '<span class="wave" aria-hidden="true">👉</span>' : '') + '</div><span class="nm">' + esc(g.name) + '</span>' + (g.status !== 'hidden' ? '<span class="tag">' + gOther(STATUS[g.status], g.g) + '</span>' : '') + '<span class="fact">' + esc(g.fact) + '</span></button>').join('') + '</div>'
       : '<div class="sub" style="text-align:center;color:var(--muted);padding:40px 0">אין פה אף אחד בשם הזה. עדיין.</div>');
 }
 function vMe(){
@@ -549,10 +566,11 @@ function vApp(){
       '<div class="avatar" style="width:112px;height:112px;font-size:48px;background:' + g.color + '">' + esc(g.ini) + '</div><div style="font-size:26px;font-weight:700">' + esc(g.name) + '</div>' +
       (g.status !== 'hidden' ? '<div class="tag" style="font-size:14px;padding:6px 14px;font-weight:500">' + gOther(STATUS[g.status], g.g) + '</div>' : '') +
       '<div style="text-align:center;padding:4px 12px">"' + esc(g.fact) + '"</div>' +
-      '<div class="grid2" style="width:100%;gap:10px;margin-top:6px"><button class="wavebtn' + (w ? ' on' : '') + '" data-act="wave" data-arg="' + g.id + '">' + (w ? 'נופפת 👋' : 'לנופף מרחוק') + '</button><a class="instabtn" href="https://instagram.com/" target="_blank" rel="noopener">' + ICON.insta + '<span dir="ltr">' + esc(g.insta) + '</span></a></div>' +
-      (w ? '<div class="sub sm" style="text-align:center">נופפת! אם גם ' + esc(g.name.split(' ')[0]) + ' ' + gOther('ינופף/תנופף', g.g) + ' לך, תקבלו התאמה.</div>' : '') + '</div></div>';
+      '<div class="grid2" style="width:100%;gap:10px;margin-top:6px"><button class="wavebtn' + (w ? ' on' : '') + '" data-act="wave" data-arg="' + g.id + '">' + (w ? 'נדנדת ✓' : 'לנדנד 👉') + '</button><a class="instabtn" href="https://instagram.com/" target="_blank" rel="noopener">' + ICON.insta + '<span dir="ltr">' + esc(g.insta) + '</span></a></div>' +
+      (w ? '<div class="sub sm" style="text-align:center">' + esc(g.name.split(' ')[0]) + ' ' + gOther('קיבל/ה', g.g) + ' נדנוד ממך. אם ' + gOther('ינדנד/תנדנד', g.g) + ' בחזרה, תוכלו להתחיל לדבר.</div>' : '') + '</div></div>';
   }
   h += vMatch();
+  h += vChat();
   return h + '</section>';
 }
 
@@ -634,6 +652,9 @@ const ACT = {
   toggleFace(){ set({faceOn:!S.faceOn}); },
   notMe(_, a){ const n = Object.assign({}, S.notMe); if (n[a]) delete n[a]; else n[a] = true; set({notMe:n}); },
   closeMatch(){ set({matchWith:null, guest:null}); },
+  startChat(_, a){ set({chatWith:a, matchWith:null, guest:null}); },
+  closeChat(){ set({chatWith:null}); },
+  sendChat(){ const t = S.chatDraft.trim(); if (!t) return; const id = S.chatWith; const c = Object.assign({}, S.chats); c[id] = (c[id] || []).concat([{me:true, t}]); set({chats:c, chatDraft:''}); if (c[id].length === 1) setTimeout(() => { const c2 = Object.assign({}, S.chats); c2[id] = (c2[id] || []).concat([{me:false, t:'היי! 😄 ניפגש ליד הבר?'}]); set({chats:c2}); }, 1200); },
   nudge(_, a){ const n = Object.assign({}, S.nudged); n[a] = true; set({nudged:n}); },
   react(_, a){
     const [id, k] = a.split(':');
