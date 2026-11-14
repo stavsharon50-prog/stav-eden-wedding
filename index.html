@@ -204,6 +204,11 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .sechead b{font-size:17px}
 .lockb{margin-inline-start:auto;font-size:12px;font-weight:700;background:var(--fill);color:#fff;border-radius:99px;padding:3px 9px;white-space:nowrap}
 .privbtn{height:48px;border-radius:14px;font-size:15px;font-weight:700}
+.giftcard{background:linear-gradient(120deg,#FBD6E5,#FFE9C9);color:var(--ink);border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:12px;width:100%;border:0;text-align:right;margin:14px 0}
+.giftcard .gi{width:44px;height:44px;border-radius:14px;background:#fff;color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.giftcard .go{height:40px;padding:0 16px;border-radius:12px;background:var(--fill);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;flex-shrink:0}
+.giftsheet{gap:14px}.amts{display:flex;flex-wrap:wrap;gap:8px}.amts .chip{height:44px}
+.giftok{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:10px 0 4px}.giftok b{font-family:var(--display);font-weight:400;font-size:54px;line-height:1;color:var(--accent)}
 .findcard{background:var(--card-solid);color:var(--ink);border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:12px;width:100%;border:0;text-align:right}
 .findcard .ic{width:auto;height:auto;background:none;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .findcard .go{height:40px;padding:0 14px;border-radius:12px;background:var(--fill);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;flex-shrink:0}
@@ -259,7 +264,7 @@ const WAZE = "https://waze.com/ul?q=%D7%A2%D7%A8%D7%95%D7%92%D7%95%D7%AA%20%D7%9
 const S = {
   screen:'welcome', rsvp:null, name:'', phone:'', count:1, photo:false,
   bus:null, stop:null, insta:'', status:'hidden', fact:'',
-  tab:'wall', filter:'all', whoQ:'', nudged:{}, chatWith:null, chats:{}, chatDraft:'', composer:false, draft:'', draftPhoto:false,
+  tab:'wall', gift:false, giftAmt:500, giftOther:'', giftMsg:'', giftPay:'bit', giftSent:false, filter:'all', whoQ:'', nudged:{}, chatWith:null, chats:{}, chatDraft:'', composer:false, draft:'', draftPhoto:false,
   guest:null, byeSent:false, nextId:1, joined:false, spot:0, waved:{},
   posts:[], loginPhone:'', loginErr:false, offsets:{}, busy:false,
   draftPriv:false, matchWith:null, albumView:'grid', albumFilter:'all', gender:'', faceOn:false, notMe:{}, toast:''
@@ -295,6 +300,7 @@ const ICON = {
   nav:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg>',
   plus:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
   img:'<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-9 8"/></svg>',
+  gift:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="5" rx="1.5"/><path d="M5 13v7h14v-7M12 8v12M12 8c-1.5-3.5-6-4-6-1.5S10 8 12 8zm0 0c1.5-3.5 6-4 6-1.5S14 8 12 8z"/></svg>',
   chat:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg>',
   send:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h14M11 5l-7 7 7 7"/></svg>',
   insta:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>',
@@ -444,14 +450,14 @@ function vWall(){
   if (!S.posts.length) {
     h += '<div class="stack" style="gap:14px">' +
       '<div class="hero"><span class="cricket" aria-hidden="true">🦗</span><h3>שקט פה. זה זמני.</h3><div>בחתונה הקיר הזה יתמלא בברכות, תמונות מהרחבה וסלפים עם הדודים. כרגע? רק את/ה ואנחנו.</div><b>מי שכותב/ת ראשון/ה מקבל/ת זכויות התרברבות לכל החיים.</b><button class="whitebtn" data-act="openComposer">לכתוב את הברכה הראשונה</button></div>' +
-      vCountdown() +
+      vCountdown() + vGiftCard() +
       '<div class="lbl">לא יודע/ת מה לכתוב? תבחר/י פתיח:</div>' + vStarters() +
       '<div class="hint" style="font-weight:500">ככה זה ייראה בערב עצמו:</div>' +
       '<div class="ghost" aria-hidden="true"><div class="g"><div class="who"><span class="dot" style="background:#E9C46A"></span>סבתא (דוגמה)</div><div>שתזכו לאהבה גדולה ולמזגן שתמיד עובד.</div><div style="font-size:14px">❤️ 14 &nbsp; 😂 6 &nbsp; 🥹 3</div></div>' +
       '<div class="g"><div class="who"><span class="dot" style="background:#9CC28F"></span>חבר מהצבא (דוגמה)</div><div class="ph" style="height:110px">תמונה מהרחבה</div></div></div>' +
     '</div>';
   } else {
-    h += '<div class="stack" style="gap:12px">' + vCountdown() +
+    h += '<div class="stack" style="gap:12px">' + vCountdown() + vGiftCard() +
       '<div class="sechead"><b>ברכות אחרונות</b><span class="note">' + S.posts.length + (S.posts.length === 1 ? ' ברכה' : ' ברכות') + '</span></div>' +
       '<div class="feed">' + S.posts.map(vPost).join('') + '</div>' +
       '<div class="note" style="font-weight:500">עוד פתיחים, למי שנתקע/ה:</div>' + vStarters() + '</div>';
@@ -532,6 +538,25 @@ function vWho(){
     (shown.length ? '<div class="grid2">' + shown.map((g) => '<button class="guest" data-act="openGuest" data-arg="' + g.id + '"><div style="position:relative"><div class="avatar" style="width:68px;height:68px;font-size:28px;background:' + g.color + '">' + esc(g.ini) + '</div>' + (S.waved[g.id] ? '<span class="wave" aria-hidden="true">👉</span>' : '') + '</div><span class="nm">' + esc(g.name) + '</span>' + (g.status !== 'hidden' ? '<span class="tag">' + gOther(STATUS[g.status], g.g) + '</span>' : '') + '<span class="fact">' + esc(g.fact) + '</span></button>').join('') + '</div>'
       : '<div class="sub" style="text-align:center;color:var(--muted);padding:40px 0">אין פה אף אחד בשם הזה. עדיין.</div>');
 }
+function vGiftCard(){
+  return '<button class="giftcard" data-act="openGift"><span class="gi" aria-hidden="true">' + ICON.gift + '</span><span style="flex:1;min-width:0;display:flex;flex-direction:column;text-align:right"><b style="font-size:16px">' + (S.giftSent ? 'המתנה שלך בדרך ✓' : 'מתנה לזוג') + '</b><span style="font-size:13px;color:var(--ink-2)">' + (S.giftSent ? 'תודה! סתיו ועדן יקבלו אותה עם הברכה.' : 'בלי מעטפות ובלי לחפש עט בחניה') + '</span></span><span class="go">' + (S.giftSent ? 'פרטים' : 'לתת') + '</span></button>';
+}
+const giftSum = () => S.giftAmt === 'other' ? (parseInt(digits(S.giftOther), 10) || 0) : S.giftAmt;
+function vGift(){
+  if (!S.gift) return '';
+  if (S.giftSent) return '<div class="scrim"><div class="sheet giftsheet" role="dialog" aria-label="מתנה לזוג"><div class="hd"><b>המתנה בדרך 💌</b><button class="iconbtn" data-act="closeGift" aria-label="סגירה">' + ICON.close + '</button></div>' +
+    '<div class="giftok"><b>₪' + giftSum().toLocaleString('he-IL') + '</b><span>נשלחו לסתיו ועדן' + (S.giftMsg.trim() ? ', עם הברכה שלך' : '') + '.</span><span class="note">רק הזוג רואה את הסכום. בשאר האפליקציה רואים רק שנתת מתנה.</span></div>' +
+    '<button class="btn" style="height:56px;font-size:17px" data-act="closeGift">סגור</button></div></div>';
+  const sum = giftSum(), ok = sum >= 18;
+  return '<div class="scrim"><div class="sheet giftsheet" role="dialog" aria-label="מתנה לזוג"><div class="hd"><b>מתנה לסתיו ועדן</b><button class="iconbtn" data-act="closeGift" aria-label="סגירה">' + ICON.close + '</button></div>' +
+    '<div class="lbl">כמה?</div><div class="amts">' + [300, 400, 500, 600].map((a) => '<button class="chip ' + sel(S.giftAmt === a) + '" data-act="giftAmt" data-arg="' + a + '">₪' + a + '</button>').join('') +
+      '<button class="chip ' + sel(S.giftAmt === 'other') + '" data-act="giftAmt" data-arg="other">סכום אחר</button></div>' +
+    (S.giftAmt === 'other' ? '<input id="giftOther" class="input ltr" type="text" inputmode="numeric" placeholder="₪" data-field="giftOther" value="' + esc(S.giftOther) + '">' : '') +
+    '<div class="field"><label for="giftMsg">כמה מילים עם המתנה (לא חובה)</label><textarea id="giftMsg" class="input" rows="2" placeholder="שתמיד יהיה לכם על מה לצחוק" data-field="giftMsg">' + esc(S.giftMsg) + '</textarea></div>' +
+    '<div class="lbl">איך משלמים?</div><div class="amts">' + [['bit','ביט'],['paybox','פייבוקס'],['card','כרטיס אשראי']].map((m) => '<button class="chip ' + sel(S.giftPay === m[0]) + '" data-act="giftPay" data-arg="' + m[0] + '">' + m[1] + '</button>').join('') + '</div>' +
+    '<div class="note">🔒 רק סתיו ועדן יראו את הסכום.</div>' +
+    '<button class="btn" style="height:58px;font-size:18px" data-act="sendGift" aria-disabled="' + !ok + '">' + (ok ? 'לשלוח מתנה של ₪' + sum.toLocaleString('he-IL') : 'לבחור סכום') + '</button></div></div>';
+}
 function vMe(){
   const st = STOPS.find((x) => x.id === S.stop);
   const bus = S.bus === true ? (st ? st.label + ' · ' + st.time : 'כן') : S.bus === false ? 'יש טרמפ' : 'עוד לא החלטת';
@@ -539,6 +564,7 @@ function vMe(){
   return '<div class="profile">' + avatar(104, 44) + '<div style="font-size:24px;font-weight:700">' + esc(nm() || 'אורח/ת מסתורי/ת') + '</div>' +
       (S.status !== 'hidden' ? '<div class="tag" style="font-size:14px;padding:6px 14px;font-weight:500">' + STATUS[S.status] + '</div>' : '') +
       '<div style="text-align:center">"' + esc(S.fact.trim() || 'עוד לא סיפרת עובדה מוזרה. חבל.') + '"</div></div>' +
+    vGiftCard() +
     '<div class="rows"><div class="r"><span>מגיע/ה?</span><b>' + rs + '</b></div><div class="r"><span>הסעה</span><b>' + bus + '</b></div>' +
       '<div class="r"><span>טלפון</span><b dir="ltr">' + esc(S.phone || 'לא צוין') + '</b></div><div class="r"><span>אינסטגרם</span><b dir="ltr">' + esc(S.insta.trim() || 'לא צוין') + '</b></div>' +
       '<div class="r"><span>מגיעים לבד?</span><a class="pill" href="' + WAZE + '" target="_blank" rel="noopener">' + ICON.nav + 'ניווט בוויז</a></div></div>' +
@@ -569,6 +595,7 @@ function vApp(){
       '<div class="grid2" style="width:100%;gap:10px;margin-top:6px"><button class="wavebtn' + (w ? ' on' : '') + '" data-act="wave" data-arg="' + g.id + '">' + (w ? 'נדנדת ✓' : 'לנדנד 👉') + '</button><a class="instabtn" href="https://instagram.com/" target="_blank" rel="noopener">' + ICON.insta + '<span dir="ltr">' + esc(g.insta) + '</span></a></div>' +
       (w ? '<div class="sub sm" style="text-align:center">' + esc(g.name.split(' ')[0]) + ' ' + gOther('קיבל/ה', g.g) + ' את הנדנוד שלך. עכשיו הכדור ' + gOther('אצלו/אצלה', g.g) + ': אם ' + gOther('ירצה/תרצה', g.g) + ', ' + gOther('יפתח/תפתח', g.g) + ' איתך צ\'אט.</div>' : '') + '</div></div>';
   }
+  h += vGift();
   h += vMatch();
   h += vChat();
   return h + '</section>';
@@ -652,6 +679,11 @@ const ACT = {
   toggleFace(){ set({faceOn:!S.faceOn}); },
   notMe(_, a){ const n = Object.assign({}, S.notMe); if (n[a]) delete n[a]; else n[a] = true; set({notMe:n}); },
   closeMatch(){ set({matchWith:null, guest:null}); },
+  openGift(){ set({gift:true}); },
+  closeGift(){ set({gift:false}); },
+  giftAmt(_, a){ set({giftAmt: a === 'other' ? 'other' : parseInt(a, 10)}); },
+  giftPay(_, a){ set({giftPay:a}); },
+  sendGift(){ if (giftSum() < 18) return; set({giftSent:true}); },
   startChat(_, a){ set({chatWith:a, matchWith:null, guest:null}); },
   closeChat(){ set({chatWith:null}); },
   sendChat(){ const t = S.chatDraft.trim(); if (!t) return; const id = S.chatWith; const c = Object.assign({}, S.chats); c[id] = (c[id] || []).concat([{me:true, t}]); set({chats:c, chatDraft:''}); if (c[id].length === 1) setTimeout(() => { const c2 = Object.assign({}, S.chats); c2[id] = (c2[id] || []).concat([{me:false, t:'יאללה, אחרי החופה בבר'}]); set({chats:c2}); }, 1200); },
