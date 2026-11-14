@@ -78,6 +78,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .btn.popping{animation:pop .3s ease-out}
 .textbtn{height:44px;border:0;background:transparent;color:var(--ink-2);font-size:15px;font-weight:500}
 .textbtn.u{text-decoration:underline}
+.searchbox{margin:12px 0}.searchbox .input{height:48px;font-size:16px;padding-right:44px;background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236B635B' stroke-width='2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='m20 20-3.5-3.5'/></svg>") no-repeat right 14px center}
 .linkish{border:0;background:transparent;padding:0;font:inherit;font-size:14px;color:var(--accent);font-weight:700;text-align:right;cursor:pointer}
 .btn2{height:52px;border:2px solid var(--fill);border-radius:18px;background:rgba(255,255,255,.55);color:var(--ink);font-size:17px;font-weight:700;width:100%}
 .iconbtn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card-solid);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
@@ -243,7 +244,7 @@ const WAZE = "https://waze.com/ul?q=%D7%A2%D7%A8%D7%95%D7%92%D7%95%D7%AA%20%D7%9
 const S = {
   screen:'welcome', rsvp:null, name:'', phone:'', count:1, photo:false,
   bus:null, stop:null, insta:'', status:'hidden', fact:'',
-  tab:'wall', filter:'all', composer:false, draft:'', draftPhoto:false,
+  tab:'wall', filter:'all', whoQ:'', nudged:{}, composer:false, draft:'', draftPhoto:false,
   guest:null, byeSent:false, nextId:1, joined:false, spot:0, waved:{},
   posts:[], loginPhone:'', loginErr:false, offsets:{}, busy:false,
   draftPriv:false, matchWith:null, albumView:'grid', albumFilter:'all', gender:'', faceOn:false, notMe:{}, toast:''
@@ -290,11 +291,11 @@ const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({'&':'
 const digits = (v) => String(v || '').replace(/\D/g, '');
 const sel = (on) => on ? 'sel-on' : 'sel-base';
 /* gendered copy: one form per guest instead of slashes */
-const GW = {'את/ה':['אתה','את'],'שאת/ה':['שאתה','שאת'],'מגיע/ה':['מגיע','מגיעה'],'רווק/ה':['רווק','רווקה'],'אורח/ת':['אורח','אורחת'],'מסתורי/ת':['מסתורי','מסתורית'],'מתלבט/ת':['מתלבט','מתלבטת'],'ופתוח/ה':['ופתוח','ופתוחה'],'תפוס/ה':['תפוס','תפוסה'],'מאחל/ת':['מאחל','מאחלת'],'זה/זו':['זה','זו'],'סיפר/ה':['סיפר','סיפרה'],'תן/י':['תן','תני'],'כשתחזור/י':['כשתחזור','כשתחזרי'],'צריך/ה':['צריך','צריכה'],'תשאיר/י':['תשאיר','תשאירי'],'מצטער/ת':['מצטער','מצטערת'],'מפספס/ת':['מפספס','מפספסת'],'דלג/י':['דלג','דלגי'],'ביישן/ית':['ביישן','ביישנית'],'שכותב/ת':['שכותב','שכותבת'],'ראשון/ה':['ראשון','ראשונה'],'מקבל/ת':['מקבל','מקבלת'],'יודע/ת':['יודע','יודעת'],'תבחר/י':['תבחר','תבחרי'],'שנתקע/ה':['שנתקע','שנתקעה'],'נופפ/ה':['נופף','נופפה'],'מישהו/י':['מישהו','מישהי'],'בוא/י':['בוא','בואי'],'תגריל/י':['תגריל','תגרילי'],'ינופף/תנופף':['ינופף','תנופף'],'תראה/י':['תראה','תראי']};
+const GW = {'את/ה':['אתה','את'],'שאת/ה':['שאתה','שאת'],'מגיע/ה':['מגיע','מגיעה'],'רווק/ה':['רווק','רווקה'],'אורח/ת':['אורח','אורחת'],'מסתורי/ת':['מסתורי','מסתורית'],'מתלבט/ת':['מתלבט','מתלבטת'],'ופתוח/ה':['ופתוח','ופתוחה'],'תפוס/ה':['תפוס','תפוסה'],'מאחל/ת':['מאחל','מאחלת'],'זה/זו':['זה','זו'],'סיפר/ה':['סיפר','סיפרה'],'תן/י':['תן','תני'],'כשתחזור/י':['כשתחזור','כשתחזרי'],'צריך/ה':['צריך','צריכה'],'תשאיר/י':['תשאיר','תשאירי'],'מצטער/ת':['מצטער','מצטערת'],'מפספס/ת':['מפספס','מפספסת'],'דלג/י':['דלג','דלגי'],'ביישן/ית':['ביישן','ביישנית'],'שכותב/ת':['שכותב','שכותבת'],'ראשון/ה':['ראשון','ראשונה'],'מקבל/ת':['מקבל','מקבלת'],'יודע/ת':['יודע','יודעת'],'תבחר/י':['תבחר','תבחרי'],'שנתקע/ה':['שנתקע','שנתקעה'],'נופפ/ה':['נופף','נופפה'],'מישהו/י':['מישהו','מישהי'],'בוא/י':['בוא','בואי'],'תגריל/י':['תגריל','תגרילי'],'ינופף/תנופף':['ינופף','תנופף'],'קיבל/ה':['קיבל','קיבלה'],'תראה/י':['תראה','תראי']};
 const GRE = new RegExp('(^|[^\\u0590-\\u05FF])(' + Object.keys(GW).sort((a, b) => b.length - a.length).map((k) => k.replace('/', '\\/')).join('|') + ')(?![\\u0590-\\u05FF])', 'g');
 const gx = (str, g) => (g === 'm' || g === 'f') ? String(str).replace(GRE, (m, pre, w) => pre + GW[w][g === 'm' ? 0 : 1]) : String(str);
 /* text about another guest: their form, and shielded from the viewer's pass */
-const gOther = (str, g) => gx(str, g).replace(/\//g, '\u2044');
+const gOther = (str, g) => gx(str, g).replace(/\//g, '\u2060/');
 const nm = () => S.name.trim();
 const initial = () => nm() ? nm().charAt(0) : '?';
 const flow = () => S.rsvp === 'no' ? ['rsvp','name','bye'] : ['rsvp','name','bus','fun','photo'];
@@ -308,7 +309,7 @@ function canNext(){
 }
 function guestList(){
   let g = GUESTS.slice();
-  if (nm() && S.rsvp !== 'no') g = [{id:'me', name:nm() + ' (זה/זו את/ה)', ini:initial(), color:S.photo ? '#FBD6E5' : '#EDE4DA', status:S.status, fact:S.fact.trim() || 'עוד לא סיפר/ה עובדה מוזרה', insta:S.insta.trim() || '@לא_צוין'}].concat(g);
+  if (nm() && S.rsvp !== 'no') g = [{id:'me', g:S.gender, name:nm() + ' (זה/זו את/ה)', ini:initial(), color:S.photo ? '#FBD6E5' : '#EDE4DA', status:S.status, fact:S.fact.trim() || 'עוד לא סיפר/ה עובדה מוזרה', insta:S.insta.trim() || '@לא_צוין'}].concat(g);
   return g;
 }
 const FILTERS = [
@@ -457,7 +458,7 @@ function vAlbum(){
   const total = 412 + mine.length;
   let h = '<div class="sub sm" style="margin-bottom:12px">' + total + ' תמונות מ-87 אורחים. דוגמה בינתיים, עד שהחתונה תמלא את זה באמת.</div>' +
     '<button class="findcard" data-act="openFind"><span class="ic" aria-hidden="true">🔍</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:16px">תמצאו אותי</b><span style="font-size:13px">כל התמונות שאת/ה בהן, לפי הסלפי שלך</span></span><span class="go">יאללה</span></button>' +
-    '<div class="filters" style="margin-top:12px">' + [['all','הכל'],['loved','הכי אהובות ❤️'],['priv','🔒 רק לזוג']].map((f) => '<button class="chip ' + sel(S.albumFilter === f[0]) + '" data-act="albumFilter" data-arg="' + f[0] + '" aria-pressed="' + (S.albumFilter === f[0]) + '">' + f[1] + '</button>').join('') + '</div>';
+    '<div class="filters" style="margin-top:12px">' + [['all','הכל'],['loved','הכי אהובות ❤️'],['priv','רק לזוג 🔒']].map((f) => '<button class="chip ' + sel(S.albumFilter === f[0]) + '" data-act="albumFilter" data-arg="' + f[0] + '" aria-pressed="' + (S.albumFilter === f[0]) + '">' + f[1] + '</button>').join('') + '</div>';
   const all = mine.concat(...ALBUM.map((g) => g.items));
   if (S.albumFilter === 'loved') {
     const top = all.slice().sort((a, b) => (b.h || 0) - (a.h || 0)).slice(0, 9);
@@ -497,18 +498,22 @@ function vMatch(){
     '<div class="h2" style="font-size:38px;line-height:1.1">יש התאמה 👀</div>' +
     '<div class="sub">' + esc(first) + ' ' + gOther('נופפ/ה', g.g) + ' לך בחזרה. הבר משמאל, אין יותר תירוצים.</div>' +
     '<button class="btn" style="height:56px;font-size:17px;margin-top:6px" data-act="closeMatch">אני בדרך לבר</button>' +
-    '<a class="outline" style="width:100%;height:48px;text-decoration:none;color:var(--ink)" href="https://instagram.com/" target="_blank" rel="noopener">להציץ באינסטגרם קודם</a>' +
+    '<div class="grid2" style="gap:10px;width:100%"><button class="outline" style="height:48px;font-size:15px" data-act="nudge" data-arg="' + g.id + '">' + (S.nudged[g.id] ? 'נדנדת ✓' : 'לנדנד 👉') + '</button>' +
+    '<a class="outline" style="height:48px;font-size:15px;text-decoration:none;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:6px" href="https://instagram.com/' + esc(String(g.insta || '').replace('@', '')) + '" target="_blank" rel="noopener">' + ICON.insta + '<span dir="ltr">' + esc(g.insta) + '</span></a></div>' +
+    (S.nudged[g.id] ? '<div class="sub sm">' + esc(first) + ' ' + gOther('קיבל/ה', g.g) + ' נדנוד. עכשיו תור' + (g.g === 'm' ? 'ו' : g.g === 'f' ? 'ה' : 'ו/ה') + '.</div>' : '') +
     '<div class="note">רק שניכם רואים את זה. אף דודה לא תדע.</div></div></div>';
 }
 function vWho(){
   const all = guestList(), others = all.filter((g) => g.id !== 'me');
   const spot = others[S.spot % others.length];
-  const shown = all;
+  const q = (S.whoQ || '').trim();
+  const shown = q ? all.filter((g) => g.name.indexOf(q) !== -1) : all;
   return '<div class="sub sm" style="margin-bottom:12px">' + others.length + ' אורחים כבר פה. בוא/י להכיר.</div>' +
+    '<div class="searchbox"><input id="whoq" class="input" type="search" placeholder="חיפוש לפי שם" data-field="whoQ" value="' + esc(S.whoQ || '') + '" aria-label="חיפוש אורח לפי שם"></div>' +
     '<div class="spot"><div class="k">' + gOther('מישהו/י', spot.g) + ' שכדאי להכיר הערב 💘</div><div class="row"><div class="avatar" style="width:72px;height:72px;font-size:30px;border:3px solid #fff;background:' + spot.color + '">' + spot.ini + '</div><div><div class="name">' + spot.name + '</div><div style="font-size:15px">"' + spot.fact + '"</div></div></div>' +
       '<div class="grid2" style="gap:10px"><button class="spotbtn w" data-act="openGuest" data-arg="' + spot.id + '">בוא/י נראה</button><button class="spotbtn o" data-act="shuffle">תגריל/י עוד</button></div></div>' +
     (shown.length ? '<div class="grid2">' + shown.map((g) => '<button class="guest" data-act="openGuest" data-arg="' + g.id + '"><div style="position:relative"><div class="avatar" style="width:68px;height:68px;font-size:28px;background:' + g.color + '">' + esc(g.ini) + '</div>' + (S.waved[g.id] ? '<span class="wave" aria-hidden="true">👋</span>' : '') + '</div><span class="nm">' + esc(g.name) + '</span>' + (g.status !== 'hidden' ? '<span class="tag">' + gOther(STATUS[g.status], g.g) + '</span>' : '') + '<span class="fact">' + esc(g.fact) + '</span></button>').join('') + '</div>'
-      : '<div class="sub" style="text-align:center;color:var(--muted);padding:40px 0">אין פה אף אחד בקטגוריה הזו. עדיין. תחכו לסלואו.</div>');
+      : '<div class="sub" style="text-align:center;color:var(--muted);padding:40px 0">אין פה אף אחד בשם הזה. עדיין.</div>');
 }
 function vMe(){
   const st = STOPS.find((x) => x.id === S.stop);
@@ -629,6 +634,7 @@ const ACT = {
   toggleFace(){ set({faceOn:!S.faceOn}); },
   notMe(_, a){ const n = Object.assign({}, S.notMe); if (n[a]) delete n[a]; else n[a] = true; set({notMe:n}); },
   closeMatch(){ set({matchWith:null, guest:null}); },
+  nudge(_, a){ const n = Object.assign({}, S.nudged); n[a] = true; set({nudged:n}); },
   react(_, a){
     const [id, k] = a.split(':');
     S.posts = S.posts.map((p) => { if (String(p.id) !== id) return p; const mine = Object.assign({}, p.mine), r = Object.assign({}, p.r); if (mine[k]) { delete mine[k]; r[k]--; } else { mine[k] = true; r[k]++; } return Object.assign({}, p, {mine, r}); });
