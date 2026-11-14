@@ -80,7 +80,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .textbtn.u{text-decoration:underline}
 .searchbox{margin:12px 0}.searchbox .input{height:48px;font-size:16px;padding-right:44px;background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236B635B' stroke-width='2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='m20 20-3.5-3.5'/></svg>") no-repeat right 14px center}
 .linkish{border:0;background:transparent;padding:0;font:inherit;font-size:14px;color:var(--accent);font-weight:700;text-align:right;cursor:pointer}
-.btn2{height:52px;border:2px solid var(--fill);border-radius:18px;background:rgba(255,255,255,.55);color:var(--ink);font-size:17px;font-weight:700;width:100%}
+.btn2{height:52px;border:0;border-radius:18px;background:rgba(255,255,255,.8);color:var(--ink);font-size:17px;font-weight:700;width:100%}
 .iconbtn{width:44px;height:44px;border-radius:50%;border:1px solid transparent;background:var(--card-solid);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
 
 /* flow */
@@ -119,9 +119,9 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .counter div{flex:1;text-align:center;font-size:18px;font-weight:700}
 .avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);color:var(--ink);flex-shrink:0}
 .avatar.on{background:var(--soft);border:4px solid var(--accent)}
-.avatar.off{background:#EDE4DA;color:var(--muted);border:4px dashed #B8AEA2}
+.avatar.off{background:linear-gradient(180deg,#A8AEBA 0%,#858B97 100%);color:#fff;border:0}
 .photostep{display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:12px}
-.outline{height:52px;padding:0 24px;border-radius:14px;border:2px solid var(--ink);background:var(--card-solid);font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px;justify-content:center}
+.outline{height:52px;padding:0 24px;border-radius:14px;border:0;background:var(--card-solid);font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px;justify-content:center}
 .waze{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;background:var(--card);border:2px solid transparent;text-decoration:none;color:var(--ink)}
 .waze .ic{width:48px;height:48px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .waze span{display:flex;flex-direction:column}
@@ -162,7 +162,7 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .spotbtn{height:48px;border-radius:14px;font-size:16px;font-weight:700}
 .spotbtn.w{border:0;background:#fff;color:var(--ink)}
 .spotbtn.o{border:2px solid #fff;background:transparent;color:#fff}
-.filters{display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:0 16px 12px;margin:0 -16px;scrollbar-width:none}
 .filters .chip{flex-shrink:0;height:40px;min-height:40px}
 .addtile{border:2px dashed #C9BFB3;background:rgba(255,255,255,.6)!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer}
 .addtile svg{width:28px;height:28px}
@@ -188,7 +188,7 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .dash.on{background:var(--soft);border-color:var(--accent)}
 .gsheet{align-items:center;gap:10px}
 .instabtn{height:56px;border-radius:16px;background:var(--fill);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
-.wavebtn{height:56px;border-radius:16px;border:2px solid var(--ink);background:var(--card-solid);font-size:16px;font-weight:700}
+.wavebtn{height:56px;border-radius:16px;border:2px solid transparent;background:var(--card-solid);font-size:16px;font-weight:700}
 .wavebtn.on{background:var(--soft);border-color:var(--accent)}
 .count{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid transparent;border-radius:20px;padding:14px 16px}
 .count .num{display:flex;flex-direction:column;align-items:center;min-width:76px}
@@ -204,9 +204,9 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .sechead b{font-size:17px}
 .lockb{margin-inline-start:auto;font-size:12px;font-weight:700;background:var(--fill);color:#fff;border-radius:99px;padding:3px 9px;white-space:nowrap}
 .privbtn{height:48px;border-radius:14px;font-size:15px;font-weight:700}
-.findcard{background:var(--hero);color:#fff;border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:12px;width:100%;border:0;text-align:right}
-.findcard .ic{width:48px;height:48px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-.findcard .go{height:40px;padding:0 14px;border-radius:12px;background:#fff;color:var(--ink);font-size:14px;font-weight:700;display:flex;align-items:center;flex-shrink:0}
+.findcard{background:var(--card-solid);color:var(--ink);border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:12px;width:100%;border:0;text-align:right}
+.findcard .ic{width:auto;height:auto;background:none;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.findcard .go{height:40px;padding:0 14px;border-radius:12px;background:var(--fill);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;flex-shrink:0}
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
 .tile{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-2);border:0;padding:0}
 .tile img{width:100%;height:100%;object-fit:cover;display:block}
@@ -272,7 +272,7 @@ const GUESTS = [
   {id:'g1', g:'f', name:'נועה כהן', ini:'נ', color:'#F2A88E', status:'looking', fact:'יודעת לפתוח בקבוק עם נעל', insta:'@noa_k'},
   {id:'g2', g:'m', name:'איתי ברק', ini:'א', color:'#9CC28F', status:'dance', fact:'נרדם פעם בשמירה. בעמידה.', insta:'@itay.b'},
   {id:'g3', g:'f', name:'דודה מרים', ini:'מ', color:'#E9C46A', status:'taken', fact:'הביאה עוגה. כן, לאולם.', insta:'@miriam.bakes'},
-  {id:'g4', g:'m', name:'עומר שגיא', ini:'ע', color:'#A9C6E8', status:'looking', fact:'יודע את כל השירים של עומר אדם. לא בגאווה.', insta:'@omer_s'},
+  {id:'g4', g:'f', name:'עומר שגיא', ini:'ע', color:'#A9C6E8', status:'looking', fact:'יודעת את כל השירים של עומר אדם. לא בגאווה.', insta:'@omer_s'},
   {id:'g5', g:'f', name:'שירה לוי', ini:'ש', color:'#D7B9E8', status:'hidden', fact:'באה בשביל הקינוחים, נשארת בשביל הדיג׳יי', insta:'@shira.l'},
   {id:'g6', g:'m', name:'יונתן גל', ini:'י', color:'#F5C6A5', status:'complicated', fact:'רוקד רק אחרי הכוס השלישית', insta:'@yoni.g'}
 ];
@@ -308,7 +308,7 @@ const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({'&':'
 const digits = (v) => String(v || '').replace(/\D/g, '');
 const sel = (on) => on ? 'sel-on' : 'sel-base';
 /* gendered copy: one form per guest instead of slashes */
-const GW = {'את/ה':['אתה','את'],'שאת/ה':['שאתה','שאת'],'מגיע/ה':['מגיע','מגיעה'],'רווק/ה':['רווק','רווקה'],'אורח/ת':['אורח','אורחת'],'מסתורי/ת':['מסתורי','מסתורית'],'מתלבט/ת':['מתלבט','מתלבטת'],'ופתוח/ה':['ופתוח','ופתוחה'],'תפוס/ה':['תפוס','תפוסה'],'מאחל/ת':['מאחל','מאחלת'],'זה/זו':['זה','זו'],'סיפר/ה':['סיפר','סיפרה'],'תן/י':['תן','תני'],'כשתחזור/י':['כשתחזור','כשתחזרי'],'צריך/ה':['צריך','צריכה'],'תשאיר/י':['תשאיר','תשאירי'],'מצטער/ת':['מצטער','מצטערת'],'מפספס/ת':['מפספס','מפספסת'],'דלג/י':['דלג','דלגי'],'ביישן/ית':['ביישן','ביישנית'],'שכותב/ת':['שכותב','שכותבת'],'ראשון/ה':['ראשון','ראשונה'],'מקבל/ת':['מקבל','מקבלת'],'יודע/ת':['יודע','יודעת'],'תבחר/י':['תבחר','תבחרי'],'שנתקע/ה':['שנתקע','שנתקעה'],'נופפ/ה':['נופף','נופפה'],'מישהו/י':['מישהו','מישהי'],'בוא/י':['בוא','בואי'],'תגריל/י':['תגריל','תגרילי'],'ינופף/תנופף':['ינופף','תנופף'],'קיבל/ה':['קיבל','קיבלה'],'ינדנד/תנדנד':['ינדנד','תנדנד'],'נדנד/ה':['נדנד','נדנדה'],'שלו/שלה':['שלו','שלה'],'תראה/י':['תראה','תראי']};
+const GW = {'את/ה':['אתה','את'],'שאת/ה':['שאתה','שאת'],'מגיע/ה':['מגיע','מגיעה'],'רווק/ה':['רווק','רווקה'],'אורח/ת':['אורח','אורחת'],'מסתורי/ת':['מסתורי','מסתורית'],'מתלבט/ת':['מתלבט','מתלבטת'],'ופתוח/ה':['ופתוח','ופתוחה'],'תפוס/ה':['תפוס','תפוסה'],'מאחל/ת':['מאחל','מאחלת'],'זה/זו':['זה','זו'],'סיפר/ה':['סיפר','סיפרה'],'תן/י':['תן','תני'],'כשתחזור/י':['כשתחזור','כשתחזרי'],'צריך/ה':['צריך','צריכה'],'תשאיר/י':['תשאיר','תשאירי'],'מצטער/ת':['מצטער','מצטערת'],'מפספס/ת':['מפספס','מפספסת'],'דלג/י':['דלג','דלגי'],'ביישן/ית':['ביישן','ביישנית'],'שכותב/ת':['שכותב','שכותבת'],'ראשון/ה':['ראשון','ראשונה'],'מקבל/ת':['מקבל','מקבלת'],'יודע/ת':['יודע','יודעת'],'תבחר/י':['תבחר','תבחרי'],'שנתקע/ה':['שנתקע','שנתקעה'],'נופפ/ה':['נופף','נופפה'],'מישהו/י':['מישהו','מישהי'],'בוא/י':['בוא','בואי'],'תגריל/י':['תגריל','תגרילי'],'ינופף/תנופף':['ינופף','תנופף'],'קיבל/ה':['קיבל','קיבלה'],'ינדנד/תנדנד':['ינדנד','תנדנד'],'נדנד/ה':['נדנד','נדנדה'],'שלו/שלה':['שלו','שלה'],'אצלו/אצלה':['אצלו','אצלה'],'ירצה/תרצה':['ירצה','תרצה'],'יפתח/תפתח':['יפתח','תפתח'],'תראה/י':['תראה','תראי']};
 const GRE = new RegExp('(^|[^\\u0590-\\u05FF])(' + Object.keys(GW).sort((a, b) => b.length - a.length).map((k) => k.replace('/', '\\/')).join('|') + ')(?![\\u0590-\\u05FF])', 'g');
 const gx = (str, g) => (g === 'm' || g === 'f') ? String(str).replace(GRE, (m, pre, w) => pre + GW[w][g === 'm' ? 0 : 1]) : String(str);
 /* text about another guest: their form, and shielded from the viewer's pass */
@@ -360,7 +360,7 @@ function vWelcome(){
     '<p class="lede">לא להתעצל, דקה אחת של מילוי מבטיחים 😉</p>' +
     '<div class="orbit"><div class="stage"><div class="rings" aria-hidden="true">' + rings + '</div>' +
       '<div class="photo"><img src="' + PHOTO + '" alt="סתיו ועדן עם הכלב, יושבים על מדרגות מול דלת כחולה"></div>' + emo + sp + '</div></div>' +
-    '<button class="btn" id="startBtn" data-act="start">יאללה, בוא נסיים עם זה</button>' +
+    '<button class="btn" id="startBtn" data-act="start">יאללה, בוא נתחיל</button>' +
     '<button class="btn2" data-act="toLogin">כבר מילאתי, תכניסו אותי</button>' +
   '</section>';
 }
@@ -460,13 +460,13 @@ function vWall(){
 }
 
 /* album */
-const PAL = ['#F2A88E','#E9C46A','#A9C6E8','#D7B9E8','#9CC28F','#F5C6A5','#FBD6E5','#CDEDEA','#FFE7A8'];
+const PAL = ['linear-gradient(135deg,#F9C9DF,#FBE7A6)','linear-gradient(135deg,#CFEEFA,#DCDDFF)','linear-gradient(135deg,#FFD6C2,#F7B59A)','linear-gradient(135deg,#D6F0DC,#CFEEFA)','linear-gradient(135deg,#FBD6E5,#D9CFF5)','linear-gradient(135deg,#FFF0B8,#FFD6C2)','linear-gradient(135deg,#FBD6E5,#FFE9C9)','linear-gradient(135deg,#DCDDFF,#F9C9DF)','linear-gradient(135deg,#CDEDEA,#FFF0B8)'];
 const ALBUM = [
   {g:'13:00 · חופה', n:58, items:[{c:0,h:41},{photo:1,h:96},{c:2,h:12},{c:3,h:8},{c:4,h:22,lock:1},{c:5,h:5}]},
   {g:'15:00 · רחבה', n:203, items:[{c:6,h:33},{c:7,h:17},{c:8,h:64},{c:1,h:9},{c:3,h:27},{c:0,h:14}]}
 ];
 function tile(it, extra){
-  const inner = it.photo ? '<img src="' + PHOTO + '" alt="סתיו ועדן">' : (it.mine ? 'התמונה שלך' : 'תמונה');
+  const inner = it.photo ? '<img src="' + PHOTO + '" alt="סתיו ועדן">' : (it.mine ? 'התמונה שלך' : '');
   return '<div class="tile' + (it.lock ? ' locked' : '') + '" style="background:' + (it.mine ? 'var(--soft)' : PAL[(it.c || 0) % PAL.length]) + '"><span class="in">' + inner + '</span>' + (it.lock ? '<span class="lk" aria-label="רק לזוג">🔒</span>' : '') + (extra || '') + '</div>';
 }
 function vAlbum(){
@@ -474,7 +474,7 @@ function vAlbum(){
   const mine = S.posts.filter((p) => p.photo).map((p) => ({mine:1, lock:p.priv, h:p.r.love}));
   const total = 412 + mine.length;
   let h = '<div class="sub sm" style="margin-bottom:12px">' + total + ' תמונות מ-87 אורחים. דוגמה בינתיים, עד שהחתונה תמלא את זה באמת.</div>' +
-    '<button class="findcard" data-act="openFind"><span class="ic" aria-hidden="true">🔍</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:16px">תמצאו אותי</b><span style="font-size:13px">כל התמונות שאת/ה בהן, לפי הסלפי שלך</span></span><span class="go">יאללה</span></button>';
+    '<button class="findcard" data-act="openFind"><span class="ic" aria-hidden="true">🔍</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:16px">תמצאו אותי</b><span style="font-size:13px;white-space:nowrap">כל התמונות שאת/ה בהן, לפי הסלפי שלך</span></span><span class="go">יאללה</span></button>';
   const all = mine.concat(...ALBUM.map((g) => g.items));
   {
     h += '<div class="tiles" style="margin-top:12px">' + '<button class="tile addtile" data-act="openComposer" aria-label="הוספת תמונה">' + ICON.plus + '<span>תמונה</span></button>' + all.map((it) => tile(it)).join('') + '</div>';
@@ -506,7 +506,7 @@ function vMatch(){
     '<div class="h2" style="font-size:34px;line-height:1.1">' + esc(first) + ' ' + gOther('נדנד/ה', g.g) + ' לך</div>' +
     '<div class="sub">' + (g.status !== 'hidden' ? gOther(STATUS[g.status], g.g) + ' · ' : '') + '"' + esc(g.fact) + '"</div>' +
     '<button class="btn" style="height:56px;font-size:17px;margin-top:6px" data-act="startChat" data-arg="' + g.id + '">' + ICON.chat + 'להתחיל צ\'אט</button>' +
-    '<a class="outline" style="width:100%;height:50px;font-size:16px;text-decoration:none;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px" href="https://instagram.com/' + esc(ig) + '" target="_blank" rel="noopener">' + ICON.insta + 'לאינסטגרם ' + gOther('שלו/שלה', g.g) + ' <span dir="ltr">' + esc(g.insta) + '</span></a>' +
+    '<a class="outline" style="width:100%;height:50px;font-size:16px;text-decoration:none;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px" href="https://instagram.com/' + esc(ig) + '" target="_blank" rel="noopener">' + ICON.insta + 'לאינסטגרם ' + gOther('שלו/שלה', g.g) + '</a>' +
     '<button class="textbtn" data-act="closeMatch">אחר כך</button>' +
     '<div class="note">רק שניכם רואים את זה. אף דודה לא תדע.</div></div></div>';
 }
@@ -567,7 +567,7 @@ function vApp(){
       (g.status !== 'hidden' ? '<div class="tag" style="font-size:14px;padding:6px 14px;font-weight:500">' + gOther(STATUS[g.status], g.g) + '</div>' : '') +
       '<div style="text-align:center;padding:4px 12px">"' + esc(g.fact) + '"</div>' +
       '<div class="grid2" style="width:100%;gap:10px;margin-top:6px"><button class="wavebtn' + (w ? ' on' : '') + '" data-act="wave" data-arg="' + g.id + '">' + (w ? 'נדנדת ✓' : 'לנדנד 👉') + '</button><a class="instabtn" href="https://instagram.com/" target="_blank" rel="noopener">' + ICON.insta + '<span dir="ltr">' + esc(g.insta) + '</span></a></div>' +
-      (w ? '<div class="sub sm" style="text-align:center">' + esc(g.name.split(' ')[0]) + ' ' + gOther('קיבל/ה', g.g) + ' נדנוד ממך. אם ' + gOther('ינדנד/תנדנד', g.g) + ' בחזרה, תוכלו להתחיל לדבר.</div>' : '') + '</div></div>';
+      (w ? '<div class="sub sm" style="text-align:center">' + esc(g.name.split(' ')[0]) + ' ' + gOther('קיבל/ה', g.g) + ' את הנדנוד שלך. עכשיו הכדור ' + gOther('אצלו/אצלה', g.g) + ': אם ' + gOther('ירצה/תרצה', g.g) + ', ' + gOther('יפתח/תפתח', g.g) + ' איתך צ\'אט.</div>' : '') + '</div></div>';
   }
   h += vMatch();
   h += vChat();
@@ -654,7 +654,7 @@ const ACT = {
   closeMatch(){ set({matchWith:null, guest:null}); },
   startChat(_, a){ set({chatWith:a, matchWith:null, guest:null}); },
   closeChat(){ set({chatWith:null}); },
-  sendChat(){ const t = S.chatDraft.trim(); if (!t) return; const id = S.chatWith; const c = Object.assign({}, S.chats); c[id] = (c[id] || []).concat([{me:true, t}]); set({chats:c, chatDraft:''}); if (c[id].length === 1) setTimeout(() => { const c2 = Object.assign({}, S.chats); c2[id] = (c2[id] || []).concat([{me:false, t:'היי! 😄 ניפגש ליד הבר?'}]); set({chats:c2}); }, 1200); },
+  sendChat(){ const t = S.chatDraft.trim(); if (!t) return; const id = S.chatWith; const c = Object.assign({}, S.chats); c[id] = (c[id] || []).concat([{me:true, t}]); set({chats:c, chatDraft:''}); if (c[id].length === 1) setTimeout(() => { const c2 = Object.assign({}, S.chats); c2[id] = (c2[id] || []).concat([{me:false, t:'יאללה, אחרי החופה בבר'}]); set({chats:c2}); }, 1200); },
   nudge(_, a){ const n = Object.assign({}, S.nudged); n[a] = true; set({nudged:n}); },
   react(_, a){
     const [id, k] = a.split(':');
