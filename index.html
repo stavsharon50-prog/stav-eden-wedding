@@ -78,6 +78,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .btn.popping{animation:pop .3s ease-out}
 .textbtn{height:44px;border:0;background:transparent;color:var(--ink-2);font-size:15px;font-weight:500}
 .textbtn.u{text-decoration:underline}
+.linkish{border:0;background:transparent;padding:0;font:inherit;font-size:14px;color:var(--accent);font-weight:700;text-align:right;cursor:pointer}
 .btn2{height:52px;border:2px solid var(--fill);border-radius:18px;background:rgba(255,255,255,.55);color:var(--ink);font-size:17px;font-weight:700;width:100%}
 .iconbtn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card-solid);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
 
@@ -162,6 +163,8 @@ textarea.input{height:auto;padding:14px 16px;font-size:17px;resize:none}
 .spotbtn.o{border:2px solid #fff;background:transparent;color:#fff}
 .filters{display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none}
 .filters .chip{flex-shrink:0;height:40px;min-height:40px}
+.addtile{border:2px dashed #C9BFB3;background:rgba(255,255,255,.6)!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer}
+.addtile svg{width:28px;height:28px}
 .guest{background:var(--card);border-radius:18px;border:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink);min-width:0}
 .guest .nm{font-weight:700;font-size:16px}
 .guest .fact{font-size:13px;color:var(--muted);width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -243,19 +246,19 @@ const S = {
   tab:'wall', filter:'all', composer:false, draft:'', draftPhoto:false,
   guest:null, byeSent:false, nextId:1, joined:false, spot:0, waved:{},
   posts:[], loginPhone:'', loginErr:false, offsets:{}, busy:false,
-  draftPriv:false, matchWith:null, albumView:'grid', albumFilter:'time', faceOn:false, notMe:{}, toast:''
+  draftPriv:false, matchWith:null, albumView:'grid', albumFilter:'all', gender:'', faceOn:false, notMe:{}, toast:''
 };
 
 const RSVP = { yes:{label:'מגיע/ה! 🎉', sub:'שאני אפספס???'}, maybe:{label:'מתלבט/ת 🤔', sub:'תלוי אם יש בר פתוח'}, no:{label:'לא מגיע/ה 😢', sub:'אבל אשלח ברכה מרגשת'} };
 const STATUS = { hidden:'סודי ביותר', looking:'רווק/ה ופתוח/ה להצעות', dance:'רווק/ה, באתי לרקוד', taken:'תפוס/ה', complicated:'זה מסובך' };
 const STOPS = [ {id:'a', label:'תל אביב, כיכר רבין', time:'11:00', seats:'12 מקומות'}, {id:'b', label:'חיפה, כרמל צרפתי', time:'11:15', seats:'7 מקומות'} ];
 const GUESTS = [
-  {id:'g1', name:'נועה כהן', ini:'נ', color:'#F2A88E', status:'looking', fact:'יודעת לפתוח בקבוק עם נעל', insta:'@noa_k'},
-  {id:'g2', name:'איתי ברק', ini:'א', color:'#9CC28F', status:'dance', fact:'נרדם פעם בשמירה. בעמידה.', insta:'@itay.b'},
-  {id:'g3', name:'דודה מרים', ini:'מ', color:'#E9C46A', status:'taken', fact:'הביאה עוגה. כן, לאולם.', insta:'@miriam.bakes'},
-  {id:'g4', name:'עומר שגיא', ini:'ע', color:'#A9C6E8', status:'looking', fact:'יודע את כל השירים של עומר אדם. לא בגאווה.', insta:'@omer_s'},
-  {id:'g5', name:'שירה לוי', ini:'ש', color:'#D7B9E8', status:'hidden', fact:'באה בשביל הקינוחים, נשארת בשביל הדיג׳יי', insta:'@shira.l'},
-  {id:'g6', name:'יונתן גל', ini:'י', color:'#F5C6A5', status:'complicated', fact:'רוקד רק אחרי הכוס השלישית', insta:'@yoni.g'}
+  {id:'g1', g:'f', name:'נועה כהן', ini:'נ', color:'#F2A88E', status:'looking', fact:'יודעת לפתוח בקבוק עם נעל', insta:'@noa_k'},
+  {id:'g2', g:'m', name:'איתי ברק', ini:'א', color:'#9CC28F', status:'dance', fact:'נרדם פעם בשמירה. בעמידה.', insta:'@itay.b'},
+  {id:'g3', g:'f', name:'דודה מרים', ini:'מ', color:'#E9C46A', status:'taken', fact:'הביאה עוגה. כן, לאולם.', insta:'@miriam.bakes'},
+  {id:'g4', g:'m', name:'עומר שגיא', ini:'ע', color:'#A9C6E8', status:'looking', fact:'יודע את כל השירים של עומר אדם. לא בגאווה.', insta:'@omer_s'},
+  {id:'g5', g:'f', name:'שירה לוי', ini:'ש', color:'#D7B9E8', status:'hidden', fact:'באה בשביל הקינוחים, נשארת בשביל הדיג׳יי', insta:'@shira.l'},
+  {id:'g6', g:'m', name:'יונתן גל', ini:'י', color:'#F5C6A5', status:'complicated', fact:'רוקד רק אחרי הכוס השלישית', insta:'@yoni.g'}
 ];
 const REACTS = [ {k:'love', e:'❤️', aria:'אהבתי'}, {k:'lol', e:'😂', aria:'מצחיק'}, {k:'cry', e:'🥹', aria:'מרגש'}, {k:'dance', e:'💃', aria:'לרקוד'} ];
 const STARTERS = [
@@ -286,6 +289,12 @@ const ICON = {
 const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const digits = (v) => String(v || '').replace(/\D/g, '');
 const sel = (on) => on ? 'sel-on' : 'sel-base';
+/* gendered copy: one form per guest instead of slashes */
+const GW = {'את/ה':['אתה','את'],'שאת/ה':['שאתה','שאת'],'מגיע/ה':['מגיע','מגיעה'],'רווק/ה':['רווק','רווקה'],'אורח/ת':['אורח','אורחת'],'מסתורי/ת':['מסתורי','מסתורית'],'מתלבט/ת':['מתלבט','מתלבטת'],'ופתוח/ה':['ופתוח','ופתוחה'],'תפוס/ה':['תפוס','תפוסה'],'מאחל/ת':['מאחל','מאחלת'],'זה/זו':['זה','זו'],'סיפר/ה':['סיפר','סיפרה'],'תן/י':['תן','תני'],'כשתחזור/י':['כשתחזור','כשתחזרי'],'צריך/ה':['צריך','צריכה'],'תשאיר/י':['תשאיר','תשאירי'],'מצטער/ת':['מצטער','מצטערת'],'מפספס/ת':['מפספס','מפספסת'],'דלג/י':['דלג','דלגי'],'ביישן/ית':['ביישן','ביישנית'],'שכותב/ת':['שכותב','שכותבת'],'ראשון/ה':['ראשון','ראשונה'],'מקבל/ת':['מקבל','מקבלת'],'יודע/ת':['יודע','יודעת'],'תבחר/י':['תבחר','תבחרי'],'שנתקע/ה':['שנתקע','שנתקעה'],'נופפ/ה':['נופף','נופפה'],'מישהו/י':['מישהו','מישהי'],'בוא/י':['בוא','בואי'],'תגריל/י':['תגריל','תגרילי'],'ינופף/תנופף':['ינופף','תנופף'],'תראה/י':['תראה','תראי']};
+const GRE = new RegExp('(^|[^\\u0590-\\u05FF])(' + Object.keys(GW).sort((a, b) => b.length - a.length).map((k) => k.replace('/', '\\/')).join('|') + ')(?![\\u0590-\\u05FF])', 'g');
+const gx = (str, g) => (g === 'm' || g === 'f') ? String(str).replace(GRE, (m, pre, w) => pre + GW[w][g === 'm' ? 0 : 1]) : String(str);
+/* text about another guest: their form, and shielded from the viewer's pass */
+const gOther = (str, g) => gx(str, g).replace(/\//g, '\u2044');
 const nm = () => S.name.trim();
 const initial = () => nm() ? nm().charAt(0) : '?';
 const flow = () => S.rsvp === 'no' ? ['rsvp','name','bye'] : ['rsvp','name','bus','fun','photo'];
@@ -362,6 +371,7 @@ function vFlow(){
     body = '<h2 class="h2">רגע, מי את/ה? 🙋</h2>' +
       '<div class="field"><label for="nm">שם מלא</label><input id="nm" class="input" type="text" autocomplete="name" placeholder="לא הכינוי מהצבא, בבקשה" data-field="name" value="' + esc(S.name) + '"></div>' +
       '<div class="field"><label for="ph">טלפון</label><input id="ph" class="input ltr" type="tel" inputmode="numeric" autocomplete="tel" placeholder="050-0000000" data-field="phone" value="' + esc(S.phone) + '"><div class="hint">ככה נזהה אותך כשתחזור/י. בלי ספאם, מבטיחים.</div></div>' +
+      '<div class="field"><div class="lbl">איך לפנות אליך?</div><div class="chips">' + [['f','בת'],['m','בן'],['x','לא רוצה להגדיר']].map((o) => '<button class="chip ' + sel(S.gender === o[0]) + '" data-act="gender" data-arg="' + o[0] + '" aria-pressed="' + (S.gender === o[0]) + '">' + o[1] + '</button>').join('') + '</div></div>' +
       (S.rsvp !== 'no' ? '<div class="field"><div class="lbl">כמה אתם?</div><div class="counter"><button data-act="dec" aria-label="פחות">−</button><div>' + (S.count === 1 ? 'רק אני (וזה בסדר גמור)' : 'אני + ' + (S.count - 1)) + '</div><button data-act="inc" aria-label="יותר">+</button></div></div>' : '');
   } else if (S.screen === 'bus') {
     body = '<h2 class="h2">צריך/ה הסעה? 🚌</h2><p class="sub">כי אף אחד לא רוצה להיות הנהג התורן בחתונה.</p>' +
@@ -412,7 +422,7 @@ function vPost(p){
 }
 function vWall(){
   let h = '';
-  if (S.joined && nm()) h += '<div class="banner">' + avatar(44, 18) + '<div class="t"><b>' + esc(nm().split(' ')[0]) + ', את/ה בפנים! 🎉</b><span class="nowrap">הפרופיל שלך כבר ב"מי פה?"</span></div><button class="iconbtn" style="border:0;background:transparent" data-act="dismissJoined" aria-label="סגירה">' + ICON.close + '</button></div>';
+  if (S.joined && nm()) h += '<div class="banner">' + avatar(44, 18) + '<div class="t"><b>' + esc(nm().split(' ')[0]) + ', את/ה בפנים! 🎉</b><button class="nowrap linkish" data-act="tab" data-arg="who">תראה/י מי עוד פה ←</button></div><button class="iconbtn" style="border:0;background:transparent" data-act="dismissJoined" aria-label="סגירה">' + ICON.close + '</button></div>';
   if (!S.posts.length) {
     h += '<div class="stack" style="gap:14px">' +
       '<div class="hero"><span class="cricket" aria-hidden="true">🦗</span><h3>שקט פה. זה זמני.</h3><div>בחתונה הקיר הזה יתמלא בברכות, תמונות מהרחבה וסלפים עם הדודים. כרגע? רק את/ה ואנחנו.</div><b>מי שכותב/ת ראשון/ה מקבל/ת זכויות התרברבות לכל החיים.</b><button class="whitebtn" data-act="openComposer">לכתוב את הברכה הראשונה</button></div>' +
@@ -447,7 +457,7 @@ function vAlbum(){
   const total = 412 + mine.length;
   let h = '<div class="sub sm" style="margin-bottom:12px">' + total + ' תמונות מ-87 אורחים. דוגמה בינתיים, עד שהחתונה תמלא את זה באמת.</div>' +
     '<button class="findcard" data-act="openFind"><span class="ic" aria-hidden="true">🔍</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:16px">תמצאו אותי</b><span style="font-size:13px">כל התמונות שאת/ה בהן, לפי הסלפי שלך</span></span><span class="go">יאללה</span></button>' +
-    '<div class="filters" style="margin-top:12px">' + [['time','לפי שעה'],['loved','הכי אהובות ❤️'],['priv','🔒 רק לזוג']].map((f) => '<button class="chip ' + sel(S.albumFilter === f[0]) + '" data-act="albumFilter" data-arg="' + f[0] + '" aria-pressed="' + (S.albumFilter === f[0]) + '">' + f[1] + '</button>').join('') + '</div>';
+    '<div class="filters" style="margin-top:12px">' + [['all','הכל'],['loved','הכי אהובות ❤️'],['priv','🔒 רק לזוג']].map((f) => '<button class="chip ' + sel(S.albumFilter === f[0]) + '" data-act="albumFilter" data-arg="' + f[0] + '" aria-pressed="' + (S.albumFilter === f[0]) + '">' + f[1] + '</button>').join('') + '</div>';
   const all = mine.concat(...ALBUM.map((g) => g.items));
   if (S.albumFilter === 'loved') {
     const top = all.slice().sort((a, b) => (b.h || 0) - (a.h || 0)).slice(0, 9);
@@ -457,8 +467,7 @@ function vAlbum(){
     h += '<div class="tiles">' + pr.map((it) => tile(it)).join('') + '</div>' +
       '<p class="note" style="margin:12px 0 0">תמונות וברכות עם 🔒 נשלחו רק לסתיו ועדן. כולם רואים שהן קיימות, רק הזוג רואה מה יש בהן.</p>';
   } else {
-    if (mine.length) h += '<div class="sechead" style="margin:4px 0 8px"><b>עכשיו · שלך</b><span class="note">' + mine.length + ' תמונות</span></div><div class="tiles" style="margin-bottom:14px">' + mine.map((it) => tile(it)).join('') + '</div>';
-    h += ALBUM.map((g) => '<div class="sechead" style="margin:4px 0 8px"><b>' + g.g + '</b><span class="note">' + g.n + ' תמונות</span></div><div class="tiles" style="margin-bottom:14px">' + g.items.map((it) => tile(it)).join('') + '</div>').join('');
+    h += '<div class="tiles">' + '<button class="tile addtile" data-act="openComposer" aria-label="הוספת תמונה">' + ICON.plus + '<span>תמונה</span></button>' + all.map((it) => tile(it)).join('') + '</div>';
   }
   return h;
 }
@@ -486,22 +495,19 @@ function vMatch(){
   return '<div class="match"><div class="box" role="dialog" aria-label="יש התאמה">' + dots +
     '<div class="pair"><div class="avatar ' + (S.photo ? 'on' : 'off') + '" style="transform:rotate(-6deg);border:4px solid #fff">' + esc(initial()) + '</div><div class="hand" aria-hidden="true">👋</div><div class="avatar" style="transform:rotate(6deg);background:' + g.color + '">' + esc(g.ini) + '</div></div>' +
     '<div class="h2" style="font-size:38px;line-height:1.1">יש התאמה 👀</div>' +
-    '<div class="sub">' + esc(first) + ' נופפ/ה לך בחזרה. הבר משמאל, אין יותר תירוצים.</div>' +
+    '<div class="sub">' + esc(first) + ' ' + gOther('נופפ/ה', g.g) + ' לך בחזרה. הבר משמאל, אין יותר תירוצים.</div>' +
     '<button class="btn" style="height:56px;font-size:17px;margin-top:6px" data-act="closeMatch">אני בדרך לבר</button>' +
     '<a class="outline" style="width:100%;height:48px;text-decoration:none;color:var(--ink)" href="https://instagram.com/" target="_blank" rel="noopener">להציץ באינסטגרם קודם</a>' +
     '<div class="note">רק שניכם רואים את זה. אף דודה לא תדע.</div></div></div>';
 }
 function vWho(){
   const all = guestList(), others = all.filter((g) => g.id !== 'me');
-  const singles = others.filter((g) => g.status === 'looking' || g.status === 'dance').length;
   const spot = others[S.spot % others.length];
-  const f = FILTERS.find((x) => x.id === S.filter) || FILTERS[0];
-  const shown = all.filter(f.fn);
-  return '<div class="sub sm" style="margin-bottom:12px">' + others.length + ' אורחים כבר פה, ' + singles + ' מהם רווקים. סתם אומרים.</div>' +
-    '<div class="spot"><div class="k">מישהו/י שכדאי להכיר הערב 💘</div><div class="row"><div class="avatar" style="width:72px;height:72px;font-size:30px;border:3px solid #fff;background:' + spot.color + '">' + spot.ini + '</div><div><div class="name">' + spot.name + '</div><div style="font-size:15px">"' + spot.fact + '"</div></div></div>' +
+  const shown = all;
+  return '<div class="sub sm" style="margin-bottom:12px">' + others.length + ' אורחים כבר פה. בוא/י להכיר.</div>' +
+    '<div class="spot"><div class="k">' + gOther('מישהו/י', spot.g) + ' שכדאי להכיר הערב 💘</div><div class="row"><div class="avatar" style="width:72px;height:72px;font-size:30px;border:3px solid #fff;background:' + spot.color + '">' + spot.ini + '</div><div><div class="name">' + spot.name + '</div><div style="font-size:15px">"' + spot.fact + '"</div></div></div>' +
       '<div class="grid2" style="gap:10px"><button class="spotbtn w" data-act="openGuest" data-arg="' + spot.id + '">בוא/י נראה</button><button class="spotbtn o" data-act="shuffle">תגריל/י עוד</button></div></div>' +
-    '<div class="filters">' + FILTERS.map((x) => '<button class="chip ' + sel(S.filter === x.id) + '" data-act="filter" data-arg="' + x.id + '" aria-pressed="' + (S.filter === x.id) + '">' + x.label + ' · ' + all.filter(x.fn).length + '</button>').join('') + '</div>' +
-    (shown.length ? '<div class="grid2">' + shown.map((g) => '<button class="guest" data-act="openGuest" data-arg="' + g.id + '"><div style="position:relative"><div class="avatar" style="width:68px;height:68px;font-size:28px;background:' + g.color + '">' + esc(g.ini) + '</div>' + (S.waved[g.id] ? '<span class="wave" aria-hidden="true">👋</span>' : '') + '</div><span class="nm">' + esc(g.name) + '</span>' + (g.status !== 'hidden' ? '<span class="tag">' + STATUS[g.status] + '</span>' : '') + '<span class="fact">' + esc(g.fact) + '</span></button>').join('') + '</div>'
+    (shown.length ? '<div class="grid2">' + shown.map((g) => '<button class="guest" data-act="openGuest" data-arg="' + g.id + '"><div style="position:relative"><div class="avatar" style="width:68px;height:68px;font-size:28px;background:' + g.color + '">' + esc(g.ini) + '</div>' + (S.waved[g.id] ? '<span class="wave" aria-hidden="true">👋</span>' : '') + '</div><span class="nm">' + esc(g.name) + '</span>' + (g.status !== 'hidden' ? '<span class="tag">' + gOther(STATUS[g.status], g.g) + '</span>' : '') + '<span class="fact">' + esc(g.fact) + '</span></button>').join('') + '</div>'
       : '<div class="sub" style="text-align:center;color:var(--muted);padding:40px 0">אין פה אף אחד בקטגוריה הזו. עדיין. תחכו לסלואו.</div>');
 }
 function vMe(){
@@ -536,10 +542,10 @@ function vApp(){
     const w = !!S.waved[g.id];
     h += '<div class="scrim"><div class="sheet gsheet" role="dialog" aria-label="' + esc(g.name) + '"><button class="iconbtn" style="align-self:flex-start" data-act="closeGuest" aria-label="סגירה">' + ICON.close + '</button>' +
       '<div class="avatar" style="width:112px;height:112px;font-size:48px;background:' + g.color + '">' + esc(g.ini) + '</div><div style="font-size:26px;font-weight:700">' + esc(g.name) + '</div>' +
-      (g.status !== 'hidden' ? '<div class="tag" style="font-size:14px;padding:6px 14px;font-weight:500">' + STATUS[g.status] + '</div>' : '') +
+      (g.status !== 'hidden' ? '<div class="tag" style="font-size:14px;padding:6px 14px;font-weight:500">' + gOther(STATUS[g.status], g.g) + '</div>' : '') +
       '<div style="text-align:center;padding:4px 12px">"' + esc(g.fact) + '"</div>' +
       '<div class="grid2" style="width:100%;gap:10px;margin-top:6px"><button class="wavebtn' + (w ? ' on' : '') + '" data-act="wave" data-arg="' + g.id + '">' + (w ? 'נופפת 👋' : 'לנופף מרחוק') + '</button><a class="instabtn" href="https://instagram.com/" target="_blank" rel="noopener">' + ICON.insta + '<span dir="ltr">' + esc(g.insta) + '</span></a></div>' +
-      (w ? '<div class="sub sm" style="text-align:center">נופפת! אם גם ' + esc(g.name.split(' ')[0]) + ' ינופף/תנופף לך, תקבלו התאמה.</div>' : '') + '</div></div>';
+      (w ? '<div class="sub sm" style="text-align:center">נופפת! אם גם ' + esc(g.name.split(' ')[0]) + ' ' + gOther('ינופף/תנופף', g.g) + ' לך, תקבלו התאמה.</div>' : '') + '</div></div>';
   }
   h += vMatch();
   return h + '</section>';
@@ -555,7 +561,7 @@ function render(){
   else if (S.screen === 'login') html = vLogin();
   else if (S.screen === 'app') html = vApp();
   else html = vFlow();
-  app.innerHTML = html;
+  app.innerHTML = gx(html, S.gender);
   fitOrbit();
   if (fid) { const el = document.getElementById(fid); if (el) { el.focus({preventScroll:true}); try { if (ss != null) el.setSelectionRange(ss, se); } catch (e) {} } }
 }
@@ -619,6 +625,7 @@ const ACT = {
   openFind(){ set({albumView:'find'}); },
   closeFind(){ set({albumView:'grid'}); },
   albumFilter(_, a){ set({albumFilter:a}); },
+  gender(_, a){ set({gender:a}); },
   toggleFace(){ set({faceOn:!S.faceOn}); },
   notMe(_, a){ const n = Object.assign({}, S.notMe); if (n[a]) delete n[a]; else n[a] = true; set({notMe:n}); },
   closeMatch(){ set({matchWith:null, guest:null}); },
